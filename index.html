@@ -4,17 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>The Book Latte - Digital Bookstore</title>
+  <title>The Book Latte - Digital Bookstore & Reader</title>
   
-  <!-- Google Fonts: Poppins & Playfair Display -->
+  <!-- Google Fonts: Poppins, Playfair Display & Lora for Reading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Font Awesome Icons -->
+  <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <script>
@@ -24,6 +24,7 @@
           fontFamily: {
             sans: ['"Poppins"', 'sans-serif'],
             serif: ['"Playfair Display"', 'serif'],
+            reader: ['"Lora"', 'serif'],
           },
           colors: {
             ruby: {
@@ -53,6 +54,7 @@
   </script>
 
   <style>
+    /* Halus bar skrol */
     ::-webkit-scrollbar {
       width: 4px;
       height: 4px;
@@ -72,17 +74,23 @@
       scrollbar-width: none;
     }
 
-    /* Gradients sampul buku lembut & elegan */
-    .book-cover-1 { background: linear-gradient(145deg, #4A0E17 0%, #7A1D2B 100%); }
-    .book-cover-2 { background: linear-gradient(145deg, #6B1724 0%, #A43647 100%); }
-    .book-cover-3 { background: linear-gradient(145deg, #2D1418 0%, #522026 100%); }
-    .book-cover-4 { background: linear-gradient(145deg, #7D2635 0%, #B84D5E 100%); }
-    .book-cover-5 { background: linear-gradient(145deg, #3A1016 0%, #6E222D 100%); }
-    .book-cover-6 { background: linear-gradient(145deg, #5C1924 0%, #8D2E3C 100%); }
-
-    /* Efek tulang buku & bayang 3D */
+    /* Efek Tulang Buku Realistik */
     .book-spine-effect {
-      box-shadow: inset 4px 0 6px -1px rgba(0, 0, 0, 0.3), inset -1px 0 2px rgba(255, 255, 255, 0.2);
+      box-shadow: inset 5px 0 8px -2px rgba(0, 0, 0, 0.45), inset -2px 0 4px rgba(255, 255, 255, 0.25);
+    }
+
+    /* Mod Membaca */
+    .reader-theme-parchment {
+      background-color: #F8F4E8;
+      color: #382C1E;
+    }
+    .reader-theme-light {
+      background-color: #FFFFFF;
+      color: #1F2937;
+    }
+    .reader-theme-dark {
+      background-color: #18181B;
+      color: #E4E4E7;
     }
 
     body {
@@ -97,17 +105,15 @@
   <!-- Mobile Frame Container -->
   <div class="w-full sm:max-w-[430px] h-screen sm:h-[890px] bg-parchment sm:rounded-[36px] shadow-2xl flex flex-col overflow-hidden relative border-0 sm:border-[8px] sm:border-stone-800">
     
-    <!-- Top Minimalist Brand Header -->
+    <!-- Header Atas Rasmi -->
     <header class="bg-softcream/95 backdrop-blur-md px-5 pt-4 pb-3 flex-shrink-0 border-b border-ruby-100/80 z-20">
       <div class="flex items-center justify-between">
         
-        <!-- Logo & Title -->
+        <!-- Logo & Tajuk Kedai -->
         <a href="https://thebooklatte.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 no-underline group">
-          <!-- Logo Bulat Ikonik tanpa teks url di dalam -->
-          <div class="w-12 h-12 rounded-full bg-gradient-to-b from-[#A31D2F] via-[#781220] to-[#480811] p-0.5 shadow-md flex-shrink-0 group-hover:scale-105 transition-transform duration-300 ring-2 ring-amber-400/50">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-b from-[#A31D2F] via-[#781220] to-[#480811] p-0.5 shadow-md flex-shrink-0 group-hover:scale-105 transition-transform duration-300 ring-2 ring-amber-400/50">
             <div class="w-full h-full rounded-full border border-amber-300/40 flex items-center justify-center bg-gradient-to-b from-white/10 to-transparent">
-              <!-- Golden Open Book Graphic Kemas & Tengah -->
-              <svg class="w-6 h-6 text-amber-300 drop-shadow-sm" viewBox="0 0 24 24" fill="currentColor">
+              <svg class="w-5 h-5 text-amber-300 drop-shadow-sm" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 4.5C10.2 3.1 7.8 2.5 5.5 2.5 3.2 2.5 1.5 3.3 0 4.5v14c1.5-1.2 3.2-2 5.5-2 2.3 0 4.7.6 6.5 2 1.8-1.4 4.2-2 6.5-2 2.3 0 4 0.8 5.5 2v-14c-1.5-1.2-3.2-2-5.5-2-2.3 0-4.7.6-6.5 2zm-1 11.5c-1.6-1.1-3.6-1.6-5.5-1.6-1.5 0-2.8.3-4 1V5.4c1.1-.6 2.4-.9 4-.9 2 0 4 .6 5.5 1.8v9.7zm11 0c-1.2-.7-2.5-1-4-1-1.9 0-3.9.5-5.5 1.6V6.3c1.5-1.2 3.5-1.8 5.5-1.8 1.6 0 2.9.3 4 .9v10.6z"/>
               </svg>
             </div>
@@ -120,7 +126,7 @@
               <span class="text-[8px] font-bold bg-ruby-800 text-amber-300 px-1.5 py-0.5 rounded tracking-wider uppercase border border-amber-300/30">E-BOOK</span>
             </div>
             <p class="text-[10px] tracking-wider text-ruby-600 font-medium">
-              www.thebooklatte.com
+              thebooklatte.com
             </p>
           </div>
         </a>
@@ -132,18 +138,18 @@
           rel="noopener noreferrer"
           class="text-xs font-semibold text-ruby-700 hover:text-ruby-900 bg-ruby-50 hover:bg-ruby-100/70 border border-ruby-200/80 px-3 py-1.5 rounded-full transition flex items-center gap-1.5 no-underline shadow-xs"
         >
-          <span>Laman Web</span>
+          <span>Laman Rasmi</span>
           <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
         </a>
       </div>
 
-      <!-- Clean Search Input -->
-      <div class="relative mt-3.5">
+      <!-- Carian Pantas -->
+      <div class="relative mt-3">
         <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-ruby-300 text-xs"></i>
         <input 
           id="searchInput" 
           type="text" 
-          placeholder="Cari judul e-book, penulis, atau topik..." 
+          placeholder="Cari e-book, penulis, atau kata kunci..." 
           class="w-full pl-9 pr-9 py-2.5 bg-ruby-50/50 hover:bg-ruby-50 text-ruby-950 placeholder-ruby-300/80 rounded-2xl text-xs focus:outline-none focus:ring-2 focus:ring-ruby-400/50 border border-ruby-100 transition shadow-inner"
           oninput="app.handleSearch(this.value)"
         >
@@ -153,42 +159,38 @@
       </div>
     </header>
 
+    <!-- Ruang Kandungan Skrol -->
     <main id="mainContainer" class="flex-1 overflow-y-auto overflow-x-hidden relative pb-20">
       
-      <!-- TAB: KATALOG UTAMA -->
+      <!-- TAB 1: KATALOG UTAMA -->
       <div id="tabCatalog" class="p-4 space-y-4">
         
-        <!-- Clean Luxury Spotlight Card with Website Banner Style -->
+        <!-- Kad Sorotan Mewah -->
         <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-ruby-900 via-ruby-800 to-ruby-700 text-white p-4 shadow-soft border border-ruby-600/30 flex items-center gap-3.5">
-          <div class="absolute -right-6 -bottom-6 w-28 h-28 bg-white/5 rounded-full blur-xl pointer-events-none"></div>
+          <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-white/5 rounded-full blur-xl pointer-events-none"></div>
           
-          <!-- Logo Bulat Rasmi Besar Bersih tanpa perkataan di dalam -->
-          <div class="w-16 h-16 rounded-full bg-gradient-to-b from-[#A31D2F] via-[#781220] to-[#480811] p-1 shadow-lg ring-2 ring-amber-300/60 flex-shrink-0 flex items-center justify-center">
-            <div class="w-full h-full rounded-full border border-amber-200/50 flex items-center justify-center bg-gradient-to-b from-white/10 to-transparent">
-              <svg class="w-8 h-8 text-amber-300 drop-shadow-sm" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 4.5C10.2 3.1 7.8 2.5 5.5 2.5 3.2 2.5 1.5 3.3 0 4.5v14c1.5-1.2 3.2-2 5.5-2 2.3 0 4.7.6 6.5 2 1.8-1.4 4.2-2 6.5-2 2.3 0 4.8 0.8 6.5 2v-14c-1.5-1.2-3.2-2-5.5-2-2.3 0-4.7.6-6.5 2zm-1 11.5c-1.6-1.1-3.6-1.6-5.5-1.6-1.5 0-2.8.3-4 1V5.4c1.1-.6 2.4-.9 4-.9 2 0 4 .6 5.5 1.8v9.7zm11 0c-1.2-.7-2.5-1-4-1-1.9 0-3.9.5-5.5 1.6V6.3c1.5-1.2 3.5-1.8 5.5-1.8 1.6 0 2.9.3 4 .9v10.6z"/>
-              </svg>
-            </div>
+          <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-1 flex-shrink-0 flex items-center justify-center shadow-inner">
+            <i class="fa-solid fa-graduation-cap text-amber-300 text-2xl drop-shadow-sm"></i>
           </div>
 
           <div class="relative z-10 flex-1 min-w-0">
-            <span class="inline-block text-[9px] font-semibold text-amber-300 tracking-widest uppercase mb-1">
-              Koleksi Inspirasi Pelajar
+            <span class="inline-block text-[9px] font-semibold text-amber-300 tracking-widest uppercase mb-0.5">
+              Koleksi Terbaik 2026
             </span>
-            <h2 class="text-sm font-serif font-bold leading-snug tracking-tight text-softcream">
-              Minda Juara, Capai Kejayaan Luar Biasa.
+            <h2 class="text-sm font-serif font-bold leading-tight text-softcream">
+              Minda Juara & Tips SPM
             </h2>
-            <p class="text-[11px] text-ruby-200/90 mt-0.5 leading-tight line-clamp-2">
-              Dapatkan e-book motivasi dan panduan peperiksaan terus daripada <span class="font-semibold text-white">thebooklatte.com</span>.
+            <p class="text-[11px] text-ruby-100/90 mt-1 leading-snug line-clamp-2">
+              Bimbingan motivasi, nutrisi minda & kawalan kelas daripada barisan penulis terkemuka.
             </p>
           </div>
         </div>
 
-        <!-- Filter Pills Bar -->
+        <!-- Pilihan Kategori -->
         <div>
-          <div class="flex items-center justify-between mb-2.5">
-            <span class="text-xs font-bold text-ruby-950 uppercase tracking-wider">
-              Kategori Terpilih
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[11px] font-bold text-ruby-950 uppercase tracking-wider">
+              Kategori
             </span>
             <span id="catalogCount" class="text-xs text-ruby-600 font-medium">8 Naskhah</span>
           </div>
@@ -198,30 +200,30 @@
           </div>
         </div>
 
-        <!-- Books Grid -->
+        <!-- Senarai Kad Buku (Grid 2 Kolum) -->
         <div id="booksGrid" class="grid grid-cols-2 gap-3.5">
           <!-- Kad buku disuntik melalui JS -->
         </div>
 
-        <!-- Carian Kosong -->
+        <!-- Paparan Jika Carian Kosong -->
         <div id="emptyCatalog" class="hidden text-center py-16 px-4">
           <div class="w-12 h-12 bg-ruby-100/60 text-ruby-500 rounded-full flex items-center justify-center mx-auto mb-3">
             <i class="fa-solid fa-magnifying-glass text-base"></i>
           </div>
-          <h4 class="font-serif font-bold text-ruby-950 text-sm">Tiada Judul Dijumpai</h4>
-          <p class="text-xs text-ruby-500 mt-1">Cuba kata kunci lain atau pilih semula semua kategori.</p>
-          <button onclick="app.resetFilter()" class="mt-3.5 px-4 py-2 bg-ruby-800 text-white text-xs font-semibold rounded-xl hover:bg-ruby-900 transition">
-            Lihat Semua Buku
+          <h4 class="font-serif font-bold text-ruby-950 text-sm">Tiada Naskhah Ditemui</h4>
+          <p class="text-xs text-ruby-500 mt-1">Cuba kata kunci lain atau pilih kategori semula.</p>
+          <button onclick="app.resetFilter()" class="mt-3 px-4 py-2 bg-ruby-800 text-white text-xs font-semibold rounded-xl hover:bg-ruby-900 transition">
+            Papar Semua Naskhah
           </button>
         </div>
 
       </div>
 
-      <!-- TAB: BUKU DISIMPAN -->
+      <!-- TAB 2: NASKHAH DISIMPAN -->
       <div id="tabSaved" class="hidden p-4 space-y-3">
         <div class="flex items-center justify-between mb-1">
           <h2 class="text-sm font-bold text-ruby-950 font-serif">
-            Senarai Disimpan
+            Senarai Disimpan (Wishlist)
           </h2>
           <span id="savedCountText" class="text-xs text-ruby-600 font-medium">0 Disimpan</span>
         </div>
@@ -235,13 +237,14 @@
             <i class="fa-regular fa-bookmark text-base"></i>
           </div>
           <h4 class="font-serif font-bold text-ruby-950 text-sm">Tiada Naskhah Disimpan</h4>
-          <p class="text-xs text-ruby-400 mt-1">Tekan ikon penanda buku pada judul kegemaran untuk membacanya kemudian.</p>
+          <p class="text-xs text-ruby-400 mt-1">Tekan butang penanda buku pada mana-mana naskhah untuk disimpan di sini.</p>
         </div>
       </div>
 
     </main>
 
-    <nav class="absolute bottom-0 left-0 right-0 h-16 bg-softcream/95 backdrop-blur-md border-t border-ruby-100 px-8 flex items-center justify-around z-30">
+    <!-- Navigasi Bawah -->
+    <nav class="absolute bottom-0 left-0 right-0 h-16 bg-softcream/95 backdrop-blur-md border-t border-ruby-100 px-6 flex items-center justify-around z-30">
       
       <button 
         id="navCatalog" 
@@ -259,7 +262,7 @@
       >
         <span id="savedBadge" class="hidden absolute top-0 right-1 w-2 h-2 rounded-full bg-ruby-600"></span>
         <i class="fa-regular fa-bookmark text-base mb-1"></i>
-        <span class="text-[10px]">Simpanan</span>
+        <span class="text-[10px]">Disimpan</span>
       </button>
 
       <a 
@@ -274,6 +277,7 @@
 
     </nav>
 
+    <!-- MODAL 1: PERINCIAN BUKU -->
     <div id="detailModal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-ruby-950/40 backdrop-blur-xs p-0 sm:p-4">
       <div class="w-full sm:max-w-md bg-softcream rounded-t-[32px] sm:rounded-[32px] max-h-[85vh] flex flex-col overflow-hidden shadow-2xl border border-ruby-100">
         
@@ -285,7 +289,7 @@
           </button>
         </div>
 
-        <!-- Kandungan Modal -->
+        <!-- Kandungan Scrollable -->
         <div class="p-5 overflow-y-auto space-y-4 text-left">
           
           <div class="flex gap-4">
@@ -311,7 +315,7 @@
                 <p id="modalAuthor" class="text-xs text-ruby-600 font-medium mt-0.5">Oleh Penulis</p>
               </div>
 
-              <div class="flex items-center gap-2 text-xs text-stone-500 pt-2">
+              <div class="flex items-center gap-2 text-xs text-stone-500 pt-1">
                 <span id="modalPages">184 ms</span>
                 <span>•</span>
                 <span id="modalYear">Edisi 2026</span>
@@ -335,16 +339,17 @@
 
           <!-- Sorotan Topik -->
           <div>
-            <h4 class="text-xs font-bold text-ruby-950 uppercase tracking-wider mb-2">Fokus Utama</h4>
+            <h4 class="text-xs font-bold text-ruby-950 uppercase tracking-wider mb-2">Fokus Utama Kandungan</h4>
             <div id="modalHighlights" class="space-y-1.5 text-xs text-stone-700">
-              <!-- Sorotan topik disuntik JS -->
+              <!-- Sorotan disuntik melalui JS -->
             </div>
           </div>
 
         </div>
 
         <!-- Butang Tindakan Modal -->
-        <div class="p-4 bg-white border-t border-ruby-100 flex items-center gap-2.5">
+        <div class="p-4 bg-white border-t border-ruby-100 flex items-center gap-2">
+          
           <button 
             id="modalBookmarkBtn" 
             onclick="app.toggleBookmarkFromModal()"
@@ -354,6 +359,17 @@
             <i id="modalBookmarkIcon" class="fa-regular fa-bookmark text-sm"></i>
           </button>
 
+          <!-- Butang Baca Sampel Percuma -->
+          <button 
+            onclick="app.openReaderFromModal()"
+            class="px-3.5 h-11 rounded-xl bg-ruby-100 hover:bg-ruby-200 text-ruby-900 text-xs font-semibold flex items-center justify-center gap-1.5 transition flex-shrink-0"
+            title="Baca Sampel"
+          >
+            <i class="fa-solid fa-book-reader text-xs"></i>
+            <span>Sampel</span>
+          </button>
+
+          <!-- Beli Terus di thebooklatte.com -->
           <a 
             id="modalBuyBtn"
             href="https://thebooklatte.com" 
@@ -361,7 +377,7 @@
             rel="noopener noreferrer"
             class="flex-1 h-11 bg-ruby-800 hover:bg-ruby-900 active:scale-98 text-white font-semibold rounded-xl text-xs shadow-soft transition flex items-center justify-center gap-2 no-underline"
           >
-            <span>Beli di BookLatte</span>
+            <span>Beli di Web Sekarang</span>
             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
           </a>
         </div>
@@ -369,7 +385,73 @@
       </div>
     </div>
 
-    <!-- Toast Notification -->
+    <!-- MODAL 2: E-READER SAMPEL BAB BUKU -->
+    <div id="readerModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-0 sm:p-4">
+      <div id="readerPaper" class="w-full h-full sm:h-[820px] sm:max-w-md reader-theme-parchment sm:rounded-3xl flex flex-col overflow-hidden shadow-2xl transition-colors duration-200">
+        
+        <!-- Header Reader Bar -->
+        <div class="px-4 py-3 border-b border-black/10 flex items-center justify-between flex-shrink-0">
+          <div class="flex items-center gap-2 min-w-0">
+            <button onclick="app.closeReader()" class="w-8 h-8 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center transition">
+              <i class="fa-solid fa-arrow-left text-xs"></i>
+            </button>
+            <div class="truncate">
+              <span id="readerBookTitle" class="text-xs font-semibold truncate block">Tajuk Sampel</span>
+              <span class="text-[9px] opacity-70 block">Pratonton Sampel Percuma</span>
+            </div>
+          </div>
+
+          <!-- Pilihan Tema & Saiz Fon Reader -->
+          <div class="flex items-center gap-1.5">
+            <button onclick="app.cycleReaderTheme()" class="w-8 h-8 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center transition" title="Tukar Tema">
+              <i class="fa-solid fa-circle-half-stroke text-xs"></i>
+            </button>
+            <button onclick="app.adjustFontSize(1)" class="w-8 h-8 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center font-bold text-xs" title="Besarkan Teks">
+              A+
+            </button>
+            <button onclick="app.adjustFontSize(-1)" class="w-8 h-8 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center font-bold text-[10px]" title="Kecilkan Teks">
+              A-
+            </button>
+          </div>
+        </div>
+
+        <!-- Ruang Teks Pembaca (Book Content) -->
+        <div id="readerContentArea" class="flex-1 overflow-y-auto px-6 py-6 font-reader text-sm leading-relaxed space-y-4">
+          <div class="border-b border-black/10 pb-3 mb-4">
+            <span class="text-[10px] font-sans font-bold uppercase tracking-widest text-ruby-700 opacity-80 block">Bab Pilihan Percuma</span>
+            <h2 id="readerChapterTitle" class="font-serif text-lg font-bold leading-tight mt-1">Tajuk Bab</h2>
+          </div>
+
+          <div id="readerBodyText" class="space-y-4 text-justify">
+            <!-- Teks pembaca disuntik melalui JS -->
+          </div>
+
+          <!-- Kad Tamat Pratonton -->
+          <div class="mt-8 pt-6 border-t border-black/15 text-center font-sans space-y-3">
+            <div class="w-10 h-10 rounded-full bg-ruby-100 text-ruby-800 flex items-center justify-center mx-auto">
+              <i class="fa-solid fa-lock text-sm"></i>
+            </div>
+            <h4 class="font-serif font-bold text-sm">Tamat Pratonton Bab Percuma</h4>
+            <p class="text-xs opacity-75 max-w-xs mx-auto">
+              Ingin membaca keseluruhan naskhah berkualiti tinggi ini? Dapatkan versi penuh e-book terus di Book Latte sekarang.
+            </p>
+            <a 
+              id="readerBuyNowBtn" 
+              href="https://thebooklatte.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-ruby-800 hover:bg-ruby-900 text-white rounded-xl text-xs font-semibold shadow-md no-underline transition"
+            >
+              <span>Beli Versi Penuh</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Toast Notifikasi Ringkas -->
     <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-ruby-950 text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-xl flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300">
       <i id="toastIcon" class="fa-solid fa-check text-ruby-300"></i>
       <span id="toastMsg">Mesej berjaya</span>
@@ -390,15 +472,20 @@
         pages: 184,
         price: "MYR 20.00",
         originalPrice: "MYR 40.00",
-        coverClass: "book-cover-1",
         coverImage: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80",
         badge: "Paling Laris",
-        bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=19521",
+        bookUrl: "https://thebooklatte.com/Dw_dtShowDetails.aspx?qBookID=EA3852",
         synopsis: "Panduan praktikal dan suntikan semangat khusus buat calon SPM untuk membina disiplin belajar, menguasai pengurusan masa berkesan, dan memperkukuh keyakinan diri menjelang peperiksaan besar.",
         highlights: [
           "Jadual ulangkaji fokus menjelang bulan genting peperiksaan.",
           "Teknik membina ketahanan mental dan mengatasi rasa gementar.",
           "Latihan berpandu menembusi gred A+ dengan strategi soalan ramalan."
+        ],
+        sampleChapter: "Bab 1: Menetapkan Kompas Kejayaan",
+        sampleParagraphs: [
+          "Kejayaan dalam SPM bukan bermula di dalam dewan peperiksaan pada hari pertama kertas diedarkan. Ia sebenarnya bermula beberapa bulan atau tahun lebih awal, tepat di meja belajar anda saat anda memilih untuk tidak menangguhkan ulangkaji.",
+          "Ramai pelajar beranggapan bahawa mereka yang mendapat 9A dilahirkan dengan kelebihan genetik yang luar biasa. Realitinya, pemenang peperiksaan besar dibina melalui sistem rutin harian yang konsisten, teknik memecahkan subjek sukar kepada modul kecil, dan keupayaan menolak godaan skrin telefon ketika jam menunjukkan masa belajar.",
+          "Fokus utama anda bukan sekadar menghafal buku teks, tetapi memahami konsep asas serta mengetahui corak skema pemarkahan yang dikehendaki oleh pemeriksa."
         ]
       },
       {
@@ -412,15 +499,20 @@
         pages: 210,
         price: "MYR 12.00",
         originalPrice: "MYR 24.00",
-        coverClass: "book-cover-2",
         coverImage: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80",
         badge: "Pilihan Utama",
-        bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=19545",
+        bookUrl: "https://thebooklatte.com/Dw_dtShowDetails.aspx?qBookID=EA3877",
         synopsis: "Membongkar rahsia psikologi pelajar cemerlang. Bagaimana mengawal fokus, menolak sikap menangguh, dan membina keyakinan tinggi apabila melangkah masuk ke bilik peperiksaan.",
         highlights: [
           "Membina kerangka pemikiran juara (Champion's Mindset).",
           "Menghapuskan tabiat malas dan sindrom kelesuan belajar.",
           "Teknik visualisasi kejayaan dan kawalan emosi tenang."
+        ],
+        sampleChapter: "Bab 1: Suara Hati Sang Juara",
+        sampleParagraphs: [
+          "Perbezaan ketara antara pelajar yang bergelut dengan pelajar yang cemerlang terletak pada naratif dalaman mereka ketika berdepan soalan yang rumit.",
+          "Pelajar yang pesimis akan segera berkata, 'Aku memang tak boleh buat bab ni.' Sebaliknya, seorang berjiwa juara akan bertanya, 'Apakah petunjuk yang tersembunyi dalam soalan ini yang boleh aku manfaatkan?'",
+          "Minda kita adalah ibarat enjin berkuasa tinggi. Cara kita mengarahkannya akan menentukan sejauh mana ia mampu memecut ketika saat paling mencabar."
         ]
       },
       {
@@ -434,15 +526,20 @@
         pages: 196,
         price: "MYR 20.00",
         originalPrice: "MYR 40.00",
-        coverClass: "book-cover-3",
         coverImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80",
         badge: "Inspirasi",
-        bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=5298",
+        bookUrl: "https://thebooklatte.com/Dw_dtShowDetails.aspx?qBookID=ER2133",
         synopsis: "Karya inspirasi yang mengupas peranan bermakna guru dan pendidik dalam mencungkil bakat terpendam pelajar, menyemarakkan keyakinan anak didik yang hampir berputus asa.",
         highlights: [
           "Sentuhan psikologi guru dalam membangkitkan impian murid.",
           "Bimbingan khusus buat pelajar yang memerlukan dorongan tambahan.",
           "Kolaborasi harmoni antara guru, ibu bapa dan pelajar."
+        ],
+        sampleChapter: "Bab 1: Menyalakan Lilin di Hati Pelajar",
+        sampleParagraphs: [
+          "Kadangkala, satu kata pujian ikhlas daripada seorang guru mampu mengubah perjalanan hidup seorang murid selama-lamanya.",
+          "Di dalam kelas yang dihuni oleh puluhan wajah, setiap anak membawa beban emosi dan impian yang tersendiri. Apabila seorang pendidik melihat melebihi sekadar markah ujian, potensi sebenar murid mula mekar.",
+          "Buku ini dipersembahkan buat setiap guru yang tidak pernah berputus asa mengangkat martabat anak didiknya ke puncak kejayaan."
         ]
       },
       {
@@ -456,15 +553,20 @@
         pages: 140,
         price: "MYR 8.00",
         originalPrice: "MYR 40.00",
-        coverClass: "book-cover-4",
         coverImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
         badge: "Kesihatan Minda",
-        bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=16211",
+        bookUrl: "https://thebooklatte.com/Dw_dtShowDetails.aspx?qBookID=ED2494",
         synopsis: "Panduan ringkas dan padat untuk pelajar sekolah serta universiti mengatasi kepenatan skrin peranti, mengurangkan tekanan tugasan, dan mengekalkan produktiviti yang sihat.",
         highlights: [
           "Teknik penjagaan fokus tanpa kelesuan mata.",
           "Mengurus sempadan antara gajet, media sosial dan ulangkaji.",
           "Senaman regangan dan pernafasan mudah di meja belajar."
+        ],
+        sampleChapter: "Bab 1: Beban Skrin & Ritma Otak",
+        sampleParagraphs: [
+          "Otak manusia tidak direka untuk menatap cahaya biru peranti selama berjam-jam tanpa jeda rehat yang berkala.",
+          "Apabila keletihan visual melanda, daya tumpuan kita merosot sehingga 60%. Akibatnya, masa ulangkaji yang panjang terasa sia-sia kerana maklumat gagal diserap ke dalam memori jangka panjang.",
+          "Amalkan peraturan 20-20-20: setiap 20 minit, alihkan pandangan sejauh 20 kaki selama sekurang-kurangnya 20 saat untuk memulihkan kesegaran minda anda."
         ]
       },
       {
@@ -478,15 +580,20 @@
         pages: 160,
         price: "MYR 12.00",
         originalPrice: "MYR 24.00",
-        coverClass: "book-cover-5",
         coverImage: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80",
         badge: "Edisi Baharu",
-        bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=19545",
+        bookUrl: "https://thebooklatte.com/Dw_dtShowDetails.aspx?qBookID=EA3741",
         synopsis: "Kecerdasan minda berkait rapat dengan nutrisi seimbang. Menghuraikan panduan diet sihat yang membantu daya ingatan, ketahanan tumpuan, dan tenaga mental pelajar.",
         highlights: [
           "Makanan terbaik untuk menyokong memori jangka panjang.",
           "Pemilihan sarapan pagi bertenaga bagi mengelakkan rasa mengantuk.",
           "Amalan hidrasi optimum semasa mengulang kaji pelajaran."
+        ],
+        sampleChapter: "Bab 1: Bahan Api Untuk Sel Otak",
+        sampleParagraphs: [
+          "Walaupun berat otak hanya sekitar dua peratus daripada keseluruhan berat badan manusia, ia menggunakan lebih 20 peratus bekalan tenaga yang kita ambil.",
+          "Mengambil makanan tinggi gula sebelum waktu ulangkaji mengakibatkan lonjakan glukosa mendadak yang disusuli oleh rasa lesu dan mengantuk yang sukar dikawal.",
+          "Pilihlah sumber karbohidrat kompleks, kekacang dan air kosong yang mencukupi untuk memastikan pengaliran oksigen ke otak sentiasa di tahap optimum."
         ]
       },
       {
@@ -500,15 +607,20 @@
         pages: 175,
         price: "MYR 12.00",
         originalPrice: "MYR 24.00",
-        coverClass: "book-cover-6",
         coverImage: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80",
         badge: "Edisi 2026",
-        bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=19545",
+        bookUrl: "https://thebooklatte.com/Dw_dtShowDetails.aspx?qBookID=EJ2011",
         synopsis: "Panduan membina hala tuju hidup yang jelas bagi remaja dan belia. Menghubungkan niat yang ikhlas dengan tindakan terancang ke arah kerjaya dan impian masa depan.",
         highlights: [
           "Formula menetapkan matlamat hidup yang bermakna.",
           "Membina jati diri dan ketahanan mental menghadapi cabaran.",
           "Panduan membina pelan tindakan kejayaan tahunan."
+        ],
+        sampleChapter: "Bab 1: Niat Sebagai Akar Kejayaan",
+        sampleParagraphs: [
+          "Apabila niat kita jelas, halangan sebesar bukit pun akan kita lihat sebagai tangga untuk mendaki lebih tinggi.",
+          "Cita-cita tanpa niat murni hanyalah angan-angan kosong. Namun apabila anda menghubungkan impian belajar anda dengan hasrat untuk membahagiakan ibu bapa dan berbakti kepada masyarakat, kekuatan luar biasa akan muncul dalam jiwa anda.",
+          "Mulakan hari ini dengan niat yang teguh, susuli dengan tindakan harian yang konsisten."
         ]
       },
       {
@@ -522,15 +634,20 @@
         pages: 155,
         price: "MYR 8.00",
         originalPrice: "MYR 16.00",
-        coverClass: "book-cover-2",
         coverImage: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80",
         badge: "Ketenangan",
-        bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=19305",
+        bookUrl: "https://thebooklatte.com/Dw_dtShowDetails.aspx?qBookID=ED2671",
         synopsis: "Himpunan catatan renungan jiwa buat pelajar yang sedang berdepan tekanan atau kekecewaan, memberi ketenangan dan dorongan untuk bangkit kembali dengan tekad baharu.",
         highlights: [
           "Membina kekuatan dalaman tatkala berdepan kegagalan.",
           "Ketenangan emosi dan kelegaan minda yang terbeban.",
           "Refleksi harian untuk membina keyakinan diri berkekalan."
+        ],
+        sampleChapter: "Bab 1: Memaafkan Diri dan Melangkah Semula",
+        sampleParagraphs: [
+          "Tidak mengapa jika anda pernah tersungkur dalam peperiksaan percubaan lalu. Kegagalan hari semalam bukan penentu muktamad takdir anda hari esok.",
+          "Kekuatan jiwa yang hakiki dibina bukan ketika semuanya berjalan lancar, melainkan ketika kita memilih untuk bangkit mengelap debu kekecewaan dan membuka semula buku teks dengan azam baharu.",
+          "Tarik nafas dalam-dalam, lepaskan rasa takut, dan percayalah bahawa usaha yang ikhlas tidak akan pernah mengkhianati hasil."
         ]
       },
       {
@@ -544,15 +661,20 @@
         pages: 148,
         price: "MYR 11.16",
         originalPrice: "MYR 12.40",
-        coverClass: "book-cover-4",
         coverImage: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80",
         badge: "Panduan Guru",
-        bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=5298",
+        bookUrl: "https://thebooklatte.com/Dw_dtShowDetails.aspx?qBookID=EA3901",
         synopsis: "Panduan praktikal guru baharu membina suasana bilik darjah yang kondusif, berdisiplin serta menceriakan murid tanpa perlu menggunakan kaedah leteran atau kekerasan.",
         highlights: [
           "Strategi kawalan kelas yang positif dan dihormati pelajar.",
           "Menarik minat murid pasif ke dalam perbincangan pembelajaran.",
           "Membina hubungan mesra dan saling menghormati antara guru dan murid."
+        ],
+        sampleChapter: "Bab 1: Menawan Hati Sebelum Mengajar Minda",
+        sampleParagraphs: [
+          "Bilik darjah yang berjaya bukan bilik darjah yang sunyi sepi kerana ketakutan, tetapi bilik darjah yang bertenaga dengan rasa ingin tahu dan hormat.",
+          "Sebelum seorang guru mampu menarik perhatian pelajar kepada formula atau teori di papan putih, beliau perlu terlebih dahulu membina jambatan kepercayaan dengan murid-muridnya.",
+          "Dengan menetapkan peraturan kelas yang jelas dan konsisten sejak minggu pertama, pengajaran akan berlangsung dengan lancar dan menyeronokkan."
         ]
       }
     ];
@@ -565,13 +687,16 @@
       "Bimbingan Pendidik"
     ];
 
-    class BookLatteCleanApp {
+    class BookLatteApp {
       constructor() {
         this.books = books;
         this.activeCategory = "Semua";
         this.searchQuery = "";
         this.savedIds = new Set(JSON.parse(localStorage.getItem('booklatte_saved') || '[]'));
-        this.activeModalBook = null;
+        this.activeBook = null;
+        this.readerThemes = ['reader-theme-parchment', 'reader-theme-light', 'reader-theme-dark'];
+        this.currentThemeIndex = 0;
+        this.currentFontSize = 14;
 
         this.init();
       }
@@ -681,19 +806,16 @@
           return `
             <div class="bg-white rounded-2xl p-2.5 shadow-card border border-ruby-100/60 flex flex-col justify-between hover:shadow-soft hover:border-ruby-200 transition-all duration-300 group">
               <div>
-                <!-- Muka Depan E-Book dengan Imej Visual & Efek Tulang Buku -->
-                <div class="h-44 rounded-xl relative cursor-pointer overflow-hidden shadow-sm book-spine-effect ${b.coverClass}" onclick="app.openModal('${b.id}')">
+                <!-- Muka Depan E-Book -->
+                <div class="h-44 rounded-xl relative cursor-pointer overflow-hidden shadow-sm book-spine-effect bg-ruby-950" onclick="app.openModal('${b.id}')">
                   
-                  <!-- Imej Sampul Buku -->
                   <img 
                     src="${b.coverImage}" 
                     alt="${b.title}" 
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
-                    onerror="this.style.opacity='0'"
                   >
 
-                  <!-- Lapisan Gradien Elegan untuk Ketegasan Teks -->
                   <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/30"></div>
 
                   <div class="relative z-10 h-full p-2.5 flex flex-col justify-between text-white">
@@ -731,15 +853,14 @@
                   <span class="text-[9px] text-stone-400 line-through block leading-none">${b.originalPrice}</span>
                 </div>
                 <div class="flex items-center gap-1.5">
-                  <a 
-                    href="${b.bookUrl}" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class="w-7 h-7 bg-ruby-800 hover:bg-ruby-900 active:scale-95 text-white rounded-lg flex items-center justify-center transition shadow-xs"
-                    title="Beli Sekarang"
+                  <button 
+                    onclick="app.openReaderDirect('${b.id}')"
+                    class="px-2 py-1 bg-amber-50 hover:bg-amber-100 text-amber-900 text-[10px] font-semibold rounded-lg transition flex items-center gap-1"
+                    title="Baca Sampel"
                   >
-                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                  </a>
+                    <i class="fa-solid fa-book-open-reader text-[9px]"></i>
+                    <span>Sampel</span>
+                  </button>
                   <button 
                     onclick="app.openModal('${b.id}')"
                     class="px-2 py-1 bg-ruby-50 hover:bg-ruby-100 text-ruby-800 text-[10px] font-semibold rounded-lg transition"
@@ -756,7 +877,7 @@
       toggleBookmark(id) {
         if (this.savedIds.has(id)) {
           this.savedIds.delete(id);
-          this.showToast("Dikeluarkan dari simpanan.");
+          this.showToast("Dikeluarkan dari senarai disimpan.");
         } else {
           this.savedIds.add(id);
           this.showToast("E-book berjaya disimpan!", "fa-bookmark");
@@ -769,16 +890,16 @@
       }
 
       toggleBookmarkFromModal() {
-        if (this.activeModalBook) {
-          this.toggleBookmark(this.activeModalBook.id);
+        if (this.activeBook) {
+          this.toggleBookmark(this.activeBook.id);
           this.updateModalBookmarkIcon();
         }
       }
 
       updateModalBookmarkIcon() {
-        if (!this.activeModalBook) return;
+        if (!this.activeBook) return;
         const icon = document.getElementById('modalBookmarkIcon');
-        const isSaved = this.savedIds.has(this.activeModalBook.id);
+        const isSaved = this.savedIds.has(this.activeBook.id);
         if (isSaved) {
           icon.className = "fa-solid fa-bookmark text-sm text-ruby-600";
         } else {
@@ -815,8 +936,7 @@
           <div class="bg-white p-3 rounded-2xl border border-ruby-100/70 shadow-card flex items-center justify-between gap-3">
             <div class="flex items-center gap-3 flex-1 min-w-0 cursor-pointer" onclick="app.openModal('${b.id}')">
               
-              <!-- Thumbnail Gambar Buku -->
-              <div class="w-11 h-15 rounded-lg flex-shrink-0 relative overflow-hidden shadow-xs bg-ruby-950 book-spine-effect">
+              <div class="w-11 h-14 rounded-lg flex-shrink-0 relative overflow-hidden shadow-xs bg-ruby-950 book-spine-effect">
                 <img src="${b.coverImage}" alt="${b.title}" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-black/20"></div>
               </div>
@@ -829,6 +949,13 @@
             </div>
 
             <div class="flex items-center gap-1.5 flex-shrink-0">
+              <button 
+                onclick="app.openReaderDirect('${b.id}')"
+                class="w-7 h-7 bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-lg flex items-center justify-center transition shadow-xs"
+                title="Baca Sampel"
+              >
+                <i class="fa-solid fa-book-reader text-xs"></i>
+              </button>
               <a 
                 href="${b.bookUrl}" 
                 target="_blank" 
@@ -854,10 +981,7 @@
         const book = this.books.find(b => b.id === id);
         if (!book) return;
 
-        this.activeModalBook = book;
-
-        const cover = document.getElementById('modalCover');
-        cover.className = `w-24 h-36 rounded-xl flex-shrink-0 relative overflow-hidden shadow-soft ${book.coverClass} flex flex-col justify-between p-2.5 text-white book-spine-effect`;
+        this.activeBook = book;
 
         const modalCoverImg = document.getElementById('modalCoverImg');
         modalCoverImg.src = book.coverImage;
@@ -894,7 +1018,49 @@
 
       closeModal() {
         document.getElementById('detailModal').classList.add('hidden');
-        this.activeModalBook = null;
+      }
+
+      openReaderFromModal() {
+        if (!this.activeBook) return;
+        this.closeModal();
+        this.launchReader(this.activeBook);
+      }
+
+      openReaderDirect(id) {
+        const book = this.books.find(b => b.id === id);
+        if (!book) return;
+        this.activeBook = book;
+        this.launchReader(book);
+      }
+
+      launchReader(book) {
+        document.getElementById('readerBookTitle').innerText = book.title;
+        document.getElementById('readerChapterTitle').innerText = book.sampleChapter;
+        
+        const bodyText = document.getElementById('readerBodyText');
+        bodyText.innerHTML = book.sampleParagraphs.map(p => `
+          <p class="indent-4 leading-relaxed">${p}</p>
+        `).join('');
+
+        document.getElementById('readerBuyNowBtn').setAttribute('href', book.bookUrl);
+        document.getElementById('readerContentArea').scrollTop = 0;
+        document.getElementById('readerModal').classList.remove('hidden');
+      }
+
+      closeReader() {
+        document.getElementById('readerModal').classList.add('hidden');
+      }
+
+      cycleReaderTheme() {
+        const paper = document.getElementById('readerPaper');
+        paper.classList.remove(...this.readerThemes);
+        this.currentThemeIndex = (this.currentThemeIndex + 1) % this.readerThemes.length;
+        paper.classList.add(this.readerThemes[this.currentThemeIndex]);
+      }
+
+      adjustFontSize(delta) {
+        this.currentFontSize = Math.min(20, Math.max(12, this.currentFontSize + delta));
+        document.getElementById('readerBodyText').style.fontSize = `${this.currentFontSize}px`;
       }
 
       showToast(msg, icon = "fa-check") {
@@ -909,13 +1075,13 @@
         this.toastTimer = setTimeout(() => {
           toast.classList.remove('opacity-100');
           toast.classList.add('opacity-0', 'pointer-events-none');
-        }, 2400);
+        }, 2200);
       }
     }
 
     let app;
     window.addEventListener('DOMContentLoaded', () => {
-      app = new BookLatteCleanApp();
+      app = new BookLatteApp();
     });
   </script>
 </body>
