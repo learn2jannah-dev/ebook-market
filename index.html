@@ -144,14 +144,14 @@
         </a>
       </div>
 
-      <!-- Carian Pantas -->
+      <!-- Carian Pantas (Menyokong carian Kod E-Book, Judul & Penulis) -->
       <div class="relative mt-3">
         <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-ruby-300 text-xs"></i>
         <input 
           id="searchInput" 
           type="text" 
-          placeholder="Cari e-book, penulis, atau kata kunci..." 
-          class="w-full pl-9 pr-9 py-2.5 bg-ruby-50/50 hover:bg-ruby-50 text-ruby-950 placeholder-ruby-300/80 rounded-2xl text-xs focus:outline-none focus:ring-2 focus:ring-ruby-400/50 border border-ruby-100 transition shadow-inner"
+          placeholder="Cari e-book, kod produk (cth: EA3852), penulis..." 
+          class="w-full pl-9 pr-9 py-2.5 bg-ruby-50/50 hover:bg-ruby-50 text-ruby-950 placeholder-ruby-400/80 rounded-2xl text-xs focus:outline-none focus:ring-2 focus:ring-ruby-400/50 border border-ruby-100 transition shadow-inner font-sans"
           oninput="app.handleSearch(this.value)"
         >
         <button id="clearSearchBtn" onclick="app.clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-ruby-300 hover:text-ruby-700 text-xs">
@@ -183,8 +183,8 @@
             <h2 class="text-sm font-serif font-bold leading-tight text-softcream">
               E-Book Terlaris & Paling Popular
             </h2>
-            <p class="text-[11px] text-ruby-100/90 mt-1 leading-snug line-clamp-2">
-              Koleksi motivasi kejayaan, panduan kecemerlangan akademik & inspirasi pendidik.
+            <p class="text-[11px] text-ruby-100/90 mt-1 leading-snug line-clamp-2 font-light">
+              Gunakan Kod E-Book untuk mencari atau beli secara terus di thebooklatte.com.
             </p>
           </div>
         </div>
@@ -214,7 +214,7 @@
             <i class="fa-solid fa-magnifying-glass text-base"></i>
           </div>
           <h4 class="font-serif font-bold text-ruby-950 text-sm">Tiada Naskhah Ditemui</h4>
-          <p class="text-xs text-ruby-500 mt-1">Cuba kata kunci lain atau pilih kategori semula.</p>
+          <p class="text-xs text-ruby-500 mt-1">Cuba masukkan kod e-book yang sah atau kata kunci lain.</p>
           <button onclick="app.resetFilter()" class="mt-3 px-4 py-2 bg-ruby-800 text-white text-xs font-semibold rounded-xl hover:bg-ruby-900 transition">
             Papar Semua Naskhah
           </button>
@@ -300,7 +300,7 @@
               <img id="modalCoverImg" src="" alt="Book Cover" class="absolute inset-0 w-full h-full object-cover">
               <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20"></div>
               
-              <div class="relative z-10">
+              <div class="relative z-10 flex justify-between items-start">
                 <span id="modalBadge" class="text-[8px] font-bold uppercase tracking-wider bg-ruby-800/90 backdrop-blur-xs px-1.5 py-0.5 rounded text-white inline-block">Hot</span>
               </div>
               <div class="relative z-10">
@@ -311,12 +311,25 @@
 
             <div class="flex-1 flex flex-col justify-between py-0.5">
               <div>
-                <span id="modalCategory" class="inline-block text-[10px] font-semibold text-ruby-700 bg-ruby-50 border border-ruby-200/60 px-2 py-0.5 rounded-full mb-1">
-                  Kategori
-                </span>
+                <div class="flex items-center gap-1.5 mb-1 flex-wrap">
+                  <span id="modalCategory" class="inline-block text-[10px] font-semibold text-ruby-700 bg-ruby-50 border border-ruby-200/60 px-2 py-0.5 rounded-full">
+                    Kategori
+                  </span>
+                  <!-- Kod Produk Berfungsi Boleh Klik Salin -->
+                  <button 
+                    id="modalCopyCodeBtn"
+                    onclick="app.copyActiveCode()"
+                    class="inline-flex items-center gap-1 text-[10px] font-mono font-bold bg-amber-50 hover:bg-amber-100/80 text-amber-900 border border-amber-300/80 px-2 py-0.5 rounded-full transition cursor-pointer"
+                    title="Klik untuk salin kod e-book"
+                  >
+                    <i class="fa-solid fa-barcode text-[9px] text-amber-700"></i>
+                    <span id="modalBookCode">Kod: -</span>
+                    <i class="fa-regular fa-copy text-[8px] text-amber-600 ml-0.5"></i>
+                  </button>
+                </div>
+
                 <h3 id="modalTitle" class="text-sm font-serif font-bold text-ruby-950 leading-snug">Tajuk E-Book</h3>
                 <p id="modalAuthor" class="text-xs text-ruby-600 font-medium mt-0.5">Oleh Penulis</p>
-                <p id="modalBookCode" class="text-[10px] text-stone-500 font-mono mt-0.5">Kod: -</p>
               </div>
 
               <div class="flex items-center gap-2 text-xs text-stone-500 pt-1">
@@ -337,7 +350,7 @@
           <!-- Penerangan Sinopsis -->
           <div>
             <h4 class="text-xs font-bold text-ruby-950 uppercase tracking-wider mb-1">Sinopsis</h4>
-            <p id="modalSynopsis" class="text-xs text-stone-600 leading-relaxed">
+            <p id="modalSynopsis" class="text-xs text-stone-600 leading-relaxed font-light">
               Penerangan ringkas mengenai e-book ini...
             </p>
           </div>
@@ -401,7 +414,10 @@
               <i class="fa-solid fa-arrow-left text-xs"></i>
             </button>
             <div class="truncate">
-              <span id="readerBookTitle" class="text-xs font-semibold truncate block">Tajuk Sampel</span>
+              <div class="flex items-center gap-1.5">
+                <span id="readerBookTitle" class="text-xs font-semibold truncate block">Tajuk Sampel</span>
+                <span id="readerBookCodeBadge" class="text-[9px] font-mono font-bold bg-black/10 text-ruby-800 px-1 py-0.2 rounded">Kod: -</span>
+              </div>
               <span class="text-[9px] opacity-70 block">Pratonton Sampel Percuma</span>
             </div>
           </div>
@@ -437,7 +453,7 @@
               <i class="fa-solid fa-lock text-sm"></i>
             </div>
             <h4 class="font-serif font-bold text-sm">Tamat Pratonton Bab Percuma</h4>
-            <p class="text-xs opacity-75 max-w-xs mx-auto">
+            <p class="text-xs opacity-75 max-w-xs mx-auto font-light">
               Beli naskhah penuh secara sah dan terus melalui portal rasmi BookLatte.
             </p>
             <a 
@@ -465,7 +481,7 @@
   </div>
 
   <script>
-    // Senarai Lengkap E-Book thebooklatte.com dengan Pautan Direct Pembelian
+    // Senarai Lengkap E-Book thebooklatte.com dengan Kod Produk Rasmi & Pautan Direct Pembelian
     const books = [
       {
         id: "EA3852",
@@ -763,7 +779,9 @@
 
         const filtered = this.books.filter(b => {
           const matchCat = this.activeCategory === "Semua" || b.category === this.activeCategory;
+          // Menyokong carian mengikut Kod E-Book (cth: EA3852), Judul, Penulis, atau Kategori
           const matchSearch = !this.searchQuery || 
+            b.id.toLowerCase().includes(this.searchQuery) ||
             b.title.toLowerCase().includes(this.searchQuery) ||
             b.author.toLowerCase().includes(this.searchQuery) ||
             b.category.toLowerCase().includes(this.searchQuery);
@@ -798,7 +816,7 @@
                   <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/30"></div>
 
                   <div class="relative z-10 h-full p-2.5 flex flex-col justify-between text-white">
-                    <div class="flex justify-between items-start">
+                    <div class="flex justify-between items-start gap-1">
                       <span class="text-[8px] font-semibold uppercase tracking-wider bg-ruby-900/80 backdrop-blur-md px-2 py-0.5 rounded-full text-white/95 border border-white/10 shadow-xs">
                         ${b.badge}
                       </span>
@@ -818,8 +836,20 @@
                   </div>
                 </div>
 
-                <div class="mt-2.5 space-y-0.5">
-                  <p class="text-[10px] text-ruby-600 font-medium">${b.category}</p>
+                <div class="mt-2.5 space-y-1">
+                  <!-- Baris Kategori & Lencana Kod E-Book -->
+                  <div class="flex items-center justify-between gap-1">
+                    <p class="text-[10px] text-ruby-600 font-medium truncate flex-1">${b.category}</p>
+                    <button 
+                      onclick="event.stopPropagation(); app.copyCode('${b.id}')" 
+                      class="text-[9px] font-mono font-bold bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300/80 px-1.5 py-0.5 rounded flex items-center gap-0.5 transition shadow-2xs" 
+                      title="Klik untuk salin kod ${b.id}"
+                    >
+                      <span>#${b.id}</span>
+                      <i class="fa-regular fa-copy text-[8px] opacity-70"></i>
+                    </button>
+                  </div>
+
                   <h3 onclick="app.openModal('${b.id}')" class="text-xs font-semibold text-ruby-950 line-clamp-2 hover:text-ruby-700 transition cursor-pointer leading-snug">
                     ${b.title}
                   </h3>
@@ -853,6 +883,24 @@
             </div>
           `;
         }).join('');
+      }
+
+      copyCode(code) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code).then(() => {
+            this.showToast(`Kod ${code} disalin ke papan klip!`, "fa-copy");
+          }).catch(() => {
+            this.showToast(`Kod: ${code}`, "fa-barcode");
+          });
+        } else {
+          this.showToast(`Kod E-Book: ${code}`, "fa-barcode");
+        }
+      }
+
+      copyActiveCode() {
+        if (this.activeBook) {
+          this.copyCode(this.activeBook.id);
+        }
       }
 
       toggleBookmark(id) {
@@ -923,9 +971,12 @@
               </div>
 
               <div class="min-w-0 flex-1">
-                <h4 class="text-xs font-semibold text-ruby-950 truncate">${b.title}</h4>
-                <p class="text-[10px] text-ruby-600 mt-0.5 truncate">${b.author}</p>
-                <span class="text-xs font-bold text-ruby-900 mt-1 inline-block">${b.price}</span>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[9px] font-mono font-bold bg-amber-100 text-amber-900 px-1.5 py-0.5 rounded border border-amber-300/80">#${b.id}</span>
+                  <p class="text-[10px] text-ruby-600 truncate">${b.category}</p>
+                </div>
+                <h4 class="text-xs font-semibold text-ruby-950 truncate mt-0.5">${b.title}</h4>
+                <span class="text-xs font-bold text-ruby-900 mt-0.5 inline-block">${b.price}</span>
               </div>
             </div>
 
@@ -975,7 +1026,10 @@
         document.getElementById('modalCategory').innerText = book.category;
         document.getElementById('modalTitle').innerText = book.title;
         document.getElementById('modalAuthor').innerText = `Oleh: ${book.author}`;
-        document.getElementById('modalBookCode').innerText = `Kod Produk: ${book.id}`;
+        
+        // Kemas kini paparan kod e-book
+        document.getElementById('modalBookCode').innerText = `Kod: ${book.id}`;
+        
         document.getElementById('modalPages').innerText = `${book.pages} ms`;
         document.getElementById('modalYear').innerText = `Edisi ${book.year}`;
         document.getElementById('modalRating').innerText = book.rating;
@@ -1019,6 +1073,7 @@
 
       launchReader(book) {
         document.getElementById('readerBookTitle').innerText = book.title;
+        document.getElementById('readerBookCodeBadge').innerText = `Kod: ${book.id}`;
         document.getElementById('readerChapterTitle').innerText = book.sampleChapter;
         
         const bodyText = document.getElementById('readerBodyText');
