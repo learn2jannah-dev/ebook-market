@@ -4,17 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>The Book Latte - E-Book Motivasi Pelajar & Lestari</title>
+  <title>The Book Latte - Digital Bookstore</title>
   
-  <!-- Google Fonts: Plus Jakarta Sans for clean modern mobile typography -->
+  <!-- Google Fonts: Poppins & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Font Awesome for clean natural icons -->
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <script>
@@ -22,31 +22,30 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            sans: ['"Poppins"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
           },
           colors: {
-            nature: {
-              50: '#F4F8F4',
-              100: '#E6EFE6',
-              200: '#CFE0D0',
-              300: '#A9C7AC',
-              400: '#7FA884',
-              500: '#5A8A61',
-              600: '#436E49',
-              700: '#34553A',
-              800: '#2B442F',
-              900: '#1C3120',
-              950: '#0F1D12'
+            ruby: {
+              50: '#FDF6F6',
+              100: '#F9ECEE',
+              200: '#F3D5D9',
+              300: '#E8B0B7',
+              400: '#D67D89',
+              500: '#C25262',
+              600: '#A43647',
+              700: '#862534',
+              800: '#5F1621',
+              900: '#3D0D14',
+              950: '#23050A'
             },
-            leaf: '#2E7D32',
-            moss: '#4A7C59',
-            earth: '#EFEBE4',
-            parchment: '#FBF9F5',
-            bark: '#3E2723'
+            parchment: '#FAF7F5',
+            softcream: '#FFFDFD',
+            goldleaf: '#C5A059'
           },
           boxShadow: {
-            'eco': '0 8px 24px -4px rgba(46, 125, 50, 0.12)',
-            'card': '0 4px 20px -2px rgba(28, 49, 32, 0.06)'
+            'soft': '0 8px 30px -4px rgba(61, 13, 20, 0.08)',
+            'card': '0 4px 20px -2px rgba(61, 13, 20, 0.05)'
           }
         }
       }
@@ -54,19 +53,17 @@
   </script>
 
   <style>
-    /* Smooth modern custom scrollbars */
     ::-webkit-scrollbar {
       width: 4px;
       height: 4px;
     }
     ::-webkit-scrollbar-track {
-      background: #F4F8F4;
+      background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: #A9C7AC;
+      background: #E8B0B7;
       border-radius: 999px;
     }
-    /* Hide scrollbar for horizontal categories */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -74,15 +71,20 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
-    
-    .cover-gradient-1 { background: linear-gradient(135deg, #1C3120 0%, #34553A 100%); }
-    .cover-gradient-2 { background: linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%); }
-    .cover-gradient-3 { background: linear-gradient(135deg, #33691E 0%, #8BC34A 100%); }
-    .cover-gradient-4 { background: linear-gradient(135deg, #004D40 0%, #26A69A 100%); }
-    .cover-gradient-5 { background: linear-gradient(135deg, #3E2723 0%, #795548 100%); }
-    .cover-gradient-6 { background: linear-gradient(135deg, #1B5E20 0%, #43A047 100%); }
-    
-    /* Touch device responsiveness */
+
+    /* Gradients sampul buku lembut & elegan */
+    .book-cover-1 { background: linear-gradient(145deg, #4A0E17 0%, #7A1D2B 100%); }
+    .book-cover-2 { background: linear-gradient(145deg, #6B1724 0%, #A43647 100%); }
+    .book-cover-3 { background: linear-gradient(145deg, #2D1418 0%, #522026 100%); }
+    .book-cover-4 { background: linear-gradient(145deg, #7D2635 0%, #B84D5E 100%); }
+    .book-cover-5 { background: linear-gradient(145deg, #3A1016 0%, #6E222D 100%); }
+    .book-cover-6 { background: linear-gradient(145deg, #5C1924 0%, #8D2E3C 100%); }
+
+    /* Efek tulang buku & bayang 3D */
+    .book-spine-effect {
+      box-shadow: inset 4px 0 6px -1px rgba(0, 0, 0, 0.3), inset -1px 0 2px rgba(255, 255, 255, 0.2);
+    }
+
     body {
       -webkit-tap-highlight-color: transparent;
       user-select: none;
@@ -92,372 +94,264 @@
 
 <body class="bg-stone-900 text-stone-800 font-sans antialiased min-h-screen flex items-center justify-center p-0 sm:p-4">
 
-  <div class="w-full sm:max-w-[430px] h-screen sm:h-[880px] bg-parchment sm:rounded-[36px] shadow-2xl flex flex-col overflow-hidden relative border-0 sm:border-[8px] sm:border-stone-800">
+  <!-- Mobile Frame Container -->
+  <div class="w-full sm:max-w-[430px] h-screen sm:h-[890px] bg-parchment sm:rounded-[36px] shadow-2xl flex flex-col overflow-hidden relative border-0 sm:border-[8px] sm:border-stone-800">
     
-    <!-- Top Status Bar & Eco Badge -->
-    <header class="bg-nature-900 text-white px-5 pt-4 pb-3 flex-shrink-0 relative z-20">
-      <div class="flex items-center justify-between mb-2">
-        <div class="flex items-center space-x-2">
-          <div class="w-8 h-8 rounded-full bg-emerald-800/80 flex items-center justify-center text-emerald-300 border border-emerald-500/30">
-            <i class="fa-solid fa-mug-hot text-sm"></i>
+    <!-- Top Minimalist Brand Header -->
+    <header class="bg-softcream/95 backdrop-blur-md px-5 pt-4 pb-3 flex-shrink-0 border-b border-ruby-100/80 z-20">
+      <div class="flex items-center justify-between">
+        
+        <!-- Logo & Title -->
+        <a href="https://thebooklatte.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 no-underline group">
+          <!-- Logo Bulat Ikonik tanpa teks url di dalam -->
+          <div class="w-12 h-12 rounded-full bg-gradient-to-b from-[#A31D2F] via-[#781220] to-[#480811] p-0.5 shadow-md flex-shrink-0 group-hover:scale-105 transition-transform duration-300 ring-2 ring-amber-400/50">
+            <div class="w-full h-full rounded-full border border-amber-300/40 flex items-center justify-center bg-gradient-to-b from-white/10 to-transparent">
+              <!-- Golden Open Book Graphic Kemas & Tengah -->
+              <svg class="w-6 h-6 text-amber-300 drop-shadow-sm" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 4.5C10.2 3.1 7.8 2.5 5.5 2.5 3.2 2.5 1.5 3.3 0 4.5v14c1.5-1.2 3.2-2 5.5-2 2.3 0 4.7.6 6.5 2 1.8-1.4 4.2-2 6.5-2 2.3 0 4 0.8 5.5 2v-14c-1.5-1.2-3.2-2-5.5-2-2.3 0-4.7.6-6.5 2zm-1 11.5c-1.6-1.1-3.6-1.6-5.5-1.6-1.5 0-2.8.3-4 1V5.4c1.1-.6 2.4-.9 4-.9 2 0 4 .6 5.5 1.8v9.7zm11 0c-1.2-.7-2.5-1-4-1-1.9 0-3.9.5-5.5 1.6V6.3c1.5-1.2 3.5-1.8 5.5-1.8 1.6 0 2.9.3 4 .9v10.6z"/>
+              </svg>
+            </div>
           </div>
           <div>
-            <span class="text-[10px] tracking-wider uppercase font-semibold text-emerald-400 block -mb-0.5">thebooklatte.com</span>
-            <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-1.5">
-              The Book Latte <span class="text-[10px] bg-emerald-600/40 text-emerald-300 font-normal px-1.5 py-0.5 rounded-full border border-emerald-500/20">Motivasi</span>
-            </h1>
+            <div class="flex items-center gap-1.5">
+              <span class="font-serif text-lg font-bold tracking-tight text-ruby-950 block leading-tight">
+                The Book Latte
+              </span>
+              <span class="text-[8px] font-bold bg-ruby-800 text-amber-300 px-1.5 py-0.5 rounded tracking-wider uppercase border border-amber-300/30">E-BOOK</span>
+            </div>
+            <p class="text-[10px] tracking-wider text-ruby-600 font-medium">
+              www.thebooklatte.com
+            </p>
           </div>
-        </div>
-        
-        <!-- Quick View Toggle Device Mode -->
-        <button id="impactBtn" onclick="app.switchTab('impact')" title="Lihat Impak Anda" class="flex items-center space-x-1.5 bg-nature-800/90 hover:bg-nature-700 px-3 py-1.5 rounded-full border border-nature-600/50 transition">
-          <i class="fa-solid fa-leaf text-emerald-400 text-xs"></i>
-          <span id="savedTreesBadge" class="text-xs font-semibold text-emerald-200">14.2 kg CO₂</span>
-        </button>
+        </a>
+
+        <!-- Portal Link Direct -->
+        <a 
+          href="https://thebooklatte.com" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-xs font-semibold text-ruby-700 hover:text-ruby-900 bg-ruby-50 hover:bg-ruby-100/70 border border-ruby-200/80 px-3 py-1.5 rounded-full transition flex items-center gap-1.5 no-underline shadow-xs"
+        >
+          <span>Laman Web</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+        </a>
       </div>
 
-      <div class="relative mt-3">
-        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-nature-400 text-sm"></i>
+      <!-- Clean Search Input -->
+      <div class="relative mt-3.5">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-ruby-300 text-xs"></i>
         <input 
           id="searchInput" 
           type="text" 
-          placeholder="Cari e-book SPM, minda juara, motivasi pelajar..." 
-          class="w-full pl-10 pr-10 py-2.5 bg-nature-950/60 text-white placeholder-nature-300/60 rounded-2xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/60 border border-nature-700/40"
+          placeholder="Cari judul e-book, penulis, atau topik..." 
+          class="w-full pl-9 pr-9 py-2.5 bg-ruby-50/50 hover:bg-ruby-50 text-ruby-950 placeholder-ruby-300/80 rounded-2xl text-xs focus:outline-none focus:ring-2 focus:ring-ruby-400/50 border border-ruby-100 transition shadow-inner"
           oninput="app.handleSearch(this.value)"
         >
-        <button id="clearSearchBtn" onclick="app.clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-nature-400 hover:text-white text-xs">
+        <button id="clearSearchBtn" onclick="app.clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-ruby-300 hover:text-ruby-700 text-xs">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
     </header>
 
-    <main id="mainContainer" class="flex-1 overflow-y-auto overflow-x-hidden relative bg-nature-50/50 pb-20">
+    <main id="mainContainer" class="flex-1 overflow-y-auto overflow-x-hidden relative pb-20">
       
-      <!-- VIEW: HOME (KATALOG UTAMA) -->
-      <div id="tabHome" class="p-4 space-y-4">
+      <!-- TAB: KATALOG UTAMA -->
+      <div id="tabCatalog" class="p-4 space-y-4">
         
-        <!-- Sustainability Impact Highlights Banner -->
-        <div class="rounded-2xl bg-gradient-to-br from-nature-800 via-nature-700 to-nature-900 text-white p-4 relative overflow-hidden shadow-eco border border-nature-600/30">
-          <div class="absolute -right-6 -bottom-6 w-28 h-28 bg-emerald-500/10 rounded-full blur-xl pointer-events-none"></div>
-          <div class="flex justify-between items-start">
-            <div>
-              <span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-950/80 text-emerald-300 px-2.5 py-0.5 rounded-full mb-1.5 border border-emerald-400/20">
-                <i class="fa-solid fa-graduation-cap text-[10px]"></i> E-Buku Motivasi Pelajar
-              </span>
-              <h2 class="text-sm font-bold leading-tight">Belajar Cemerlang, Sayangi Bumi Kita</h2>
-              <p class="text-xs text-nature-200 mt-1 max-w-[210px] leading-relaxed">Dapatkan e-book motivasi di thebooklatte.com tanpa cetakan kertas & bantu kurangkan jejak karbon.</p>
+        <!-- Clean Luxury Spotlight Card with Website Banner Style -->
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-ruby-900 via-ruby-800 to-ruby-700 text-white p-4 shadow-soft border border-ruby-600/30 flex items-center gap-3.5">
+          <div class="absolute -right-6 -bottom-6 w-28 h-28 bg-white/5 rounded-full blur-xl pointer-events-none"></div>
+          
+          <!-- Logo Bulat Rasmi Besar Bersih tanpa perkataan di dalam -->
+          <div class="w-16 h-16 rounded-full bg-gradient-to-b from-[#A31D2F] via-[#781220] to-[#480811] p-1 shadow-lg ring-2 ring-amber-300/60 flex-shrink-0 flex items-center justify-center">
+            <div class="w-full h-full rounded-full border border-amber-200/50 flex items-center justify-center bg-gradient-to-b from-white/10 to-transparent">
+              <svg class="w-8 h-8 text-amber-300 drop-shadow-sm" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 4.5C10.2 3.1 7.8 2.5 5.5 2.5 3.2 2.5 1.5 3.3 0 4.5v14c1.5-1.2 3.2-2 5.5-2 2.3 0 4.7.6 6.5 2 1.8-1.4 4.2-2 6.5-2 2.3 0 4.8 0.8 6.5 2v-14c-1.5-1.2-3.2-2-5.5-2-2.3 0-4.7.6-6.5 2zm-1 11.5c-1.6-1.1-3.6-1.6-5.5-1.6-1.5 0-2.8.3-4 1V5.4c1.1-.6 2.4-.9 4-.9 2 0 4 .6 5.5 1.8v9.7zm11 0c-1.2-.7-2.5-1-4-1-1.9 0-3.9.5-5.5 1.6V6.3c1.5-1.2 3.5-1.8 5.5-1.8 1.6 0 2.9.3 4 .9v10.6z"/>
+              </svg>
             </div>
-            <div class="text-right flex flex-col items-end">
-              <span class="text-2xl font-black text-emerald-300 tracking-tight">100%</span>
-              <span class="text-[10px] text-emerald-200 uppercase font-medium">Digital Mesra Alam</span>
-              <button onclick="app.switchTab('impact')" class="mt-2 text-[11px] font-semibold bg-white/10 hover:bg-white/20 text-white px-2.5 py-1 rounded-lg border border-white/20 transition flex items-center gap-1">
-                Kira <i class="fa-solid fa-arrow-right text-[9px]"></i>
-              </button>
-            </div>
+          </div>
+
+          <div class="relative z-10 flex-1 min-w-0">
+            <span class="inline-block text-[9px] font-semibold text-amber-300 tracking-widest uppercase mb-1">
+              Koleksi Inspirasi Pelajar
+            </span>
+            <h2 class="text-sm font-serif font-bold leading-snug tracking-tight text-softcream">
+              Minda Juara, Capai Kejayaan Luar Biasa.
+            </h2>
+            <p class="text-[11px] text-ruby-200/90 mt-0.5 leading-tight line-clamp-2">
+              Dapatkan e-book motivasi dan panduan peperiksaan terus daripada <span class="font-semibold text-white">thebooklatte.com</span>.
+            </p>
           </div>
         </div>
 
+        <!-- Filter Pills Bar -->
         <div>
           <div class="flex items-center justify-between mb-2.5">
-            <h3 class="text-xs font-bold text-nature-900 uppercase tracking-wider">Koleksi Motivasi</h3>
-            <span id="bookCountText" class="text-xs text-nature-600 font-medium">8 E-Book Dijumpai</span>
+            <span class="text-xs font-bold text-ruby-950 uppercase tracking-wider">
+              Kategori Terpilih
+            </span>
+            <span id="catalogCount" class="text-xs text-ruby-600 font-medium">8 Naskhah</span>
           </div>
 
-          <!-- Category Pill Buttons -->
-          <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4" id="categoryList">
-            <!-- Injected dynamically via JS -->
+          <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4" id="categoryContainer">
+            <!-- Kategori disuntik melalui JS -->
           </div>
         </div>
 
-        <!-- Featured Carousel: Pilihan Editor Terkini -->
-        <div id="featuredSection" class="pt-1">
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="text-sm font-bold text-nature-950 flex items-center gap-1.5">
-              <i class="fa-solid fa-award text-amber-600 text-xs"></i> E-Book Terkini thebooklatte.com
-            </h3>
-            <span class="text-[11px] text-nature-600 font-medium bg-nature-100 px-2 py-0.5 rounded-full">Koleksi Pelajar</span>
-          </div>
-
-          <!-- Books Grid -->
-          <div id="booksGrid" class="grid grid-cols-2 gap-3.5">
-            <!-- Books cards will be dynamically rendered here -->
-          </div>
+        <!-- Books Grid -->
+        <div id="booksGrid" class="grid grid-cols-2 gap-3.5">
+          <!-- Kad buku disuntik melalui JS -->
         </div>
 
-        <!-- No Results Found State -->
-        <div id="emptyState" class="hidden text-center py-12 px-4">
-          <div class="w-16 h-16 bg-nature-100 text-nature-500 rounded-full flex items-center justify-center mx-auto mb-3">
-            <i class="fa-solid fa-book-open text-2xl"></i>
+        <!-- Carian Kosong -->
+        <div id="emptyCatalog" class="hidden text-center py-16 px-4">
+          <div class="w-12 h-12 bg-ruby-100/60 text-ruby-500 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa-solid fa-magnifying-glass text-base"></i>
           </div>
-          <h4 class="font-bold text-nature-900 text-sm">Tiada E-Book Dijumpai</h4>
-          <p class="text-xs text-nature-600 mt-1 max-w-xs mx-auto">Cuba cari dengan kata kunci lain atau pilih kategori "Semua Kategori".</p>
-          <button onclick="app.resetFilter()" class="mt-3 px-4 py-2 bg-nature-700 text-white text-xs font-semibold rounded-xl">
-            Set Semula Carian
+          <h4 class="font-serif font-bold text-ruby-950 text-sm">Tiada Judul Dijumpai</h4>
+          <p class="text-xs text-ruby-500 mt-1">Cuba kata kunci lain atau pilih semula semua kategori.</p>
+          <button onclick="app.resetFilter()" class="mt-3.5 px-4 py-2 bg-ruby-800 text-white text-xs font-semibold rounded-xl hover:bg-ruby-900 transition">
+            Lihat Semua Buku
           </button>
         </div>
 
       </div>
 
-      <!-- VIEW: IMPACT / SUSTAINABILITY CALCULATOR -->
-      <div id="tabImpact" class="hidden p-4 space-y-4">
-        <div class="bg-gradient-to-r from-emerald-800 to-nature-800 text-white p-4 rounded-2xl">
-          <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-emerald-300 text-xl border border-white/15">
-              <i class="fa-solid fa-calculator"></i>
-            </div>
-            <div>
-              <h2 class="text-base font-bold">Kalkulator Jejak Lestari</h2>
-              <p class="text-xs text-emerald-200">Kira impak alam sekitar membaca secara digital</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Interactive Calculator Card -->
-        <div class="bg-white p-4 rounded-2xl shadow-card border border-nature-200/70 space-y-4">
-          <div>
-            <div class="flex justify-between items-center mb-1">
-              <label class="text-xs font-bold text-nature-900">Berapa e-book anda baca setahun?</label>
-              <span id="sliderValue" class="text-sm font-extrabold text-nature-700 bg-nature-100 px-2 py-0.5 rounded-lg">12 Buku</span>
-            </div>
-            <input 
-              id="calcSlider" 
-              type="range" 
-              min="1" 
-              max="50" 
-              value="12" 
-              class="w-full accent-nature-700 h-2 bg-nature-100 rounded-lg cursor-pointer"
-              oninput="app.updateCalculator(this.value)"
-            >
-            <div class="flex justify-between text-[10px] text-stone-600 mt-1">
-              <span>1 Buku</span>
-              <span>25 Buku</span>
-              <span>50+ Buku</span>
-            </div>
-          </div>
-
-          <!-- Impact Metrics Grid -->
-          <div class="grid grid-cols-2 gap-3 pt-2">
-            <div class="p-3 bg-nature-50/80 rounded-xl border border-nature-200/80 flex flex-col justify-between">
-              <div class="flex items-center justify-between text-nature-600 mb-1">
-                <span class="text-[11px] font-semibold">Kertas Dijimatkan</span>
-                <i class="fa-solid fa-file-lines text-xs text-emerald-600"></i>
-              </div>
-              <p id="calcPaper" class="text-lg font-black text-nature-900">3,600 <span class="text-xs font-medium text-stone-600">helai</span></p>
-              <p class="text-[10px] text-stone-600 mt-0.5">bersamaan ~7.2 rim kertas A4</p>
-            </div>
-
-            <div class="p-3 bg-emerald-50/80 rounded-xl border border-emerald-200/80 flex flex-col justify-between">
-              <div class="flex items-center justify-between text-emerald-700 mb-1">
-                <span class="text-[11px] font-semibold">Pelepasan CO₂</span>
-                <i class="fa-solid fa-cloud-arrow-down text-xs text-emerald-600"></i>
-              </div>
-              <p id="calcCO2" class="text-lg font-black text-emerald-900">32.4 <span class="text-xs font-medium text-stone-600">kg CO₂e</span></p>
-              <p class="text-[10px] text-stone-600 mt-0.5">dihalang dari atmosfera</p>
-            </div>
-
-            <div class="p-3 bg-blue-50/80 rounded-xl border border-blue-200/80 flex flex-col justify-between">
-              <div class="flex items-center justify-between text-blue-700 mb-1">
-                <span class="text-[11px] font-semibold">Penggunaan Air</span>
-                <i class="fa-solid fa-droplet text-xs text-blue-600"></i>
-              </div>
-              <p id="calcWater" class="text-lg font-black text-blue-950">187.2 <span class="text-xs font-medium text-stone-600">Liter</span></p>
-              <p class="text-[10px] text-stone-600 mt-0.5">air proses pulpa dijimatkan</p>
-            </div>
-
-            <div class="p-3 bg-amber-50/80 rounded-xl border border-amber-200/80 flex flex-col justify-between">
-              <div class="flex items-center justify-between text-amber-800 mb-1">
-                <span class="text-[11px] font-semibold">Pokok Dipelihara</span>
-                <i class="fa-solid fa-tree text-xs text-amber-700"></i>
-              </div>
-              <p id="calcTrees" class="text-lg font-black text-amber-950">0.43 <span class="text-xs font-medium text-stone-600">Pokok</span></p>
-              <p class="text-[10px] text-stone-600 mt-0.5">pokok matang terselamat</p>
-            </div>
-          </div>
-
-          <!-- Eco Commitment Pledge -->
-          <div class="bg-nature-100/70 p-3 rounded-xl border border-nature-300/60 flex items-start space-x-2.5">
-            <i class="fa-solid fa-award text-nature-700 mt-0.5 text-base"></i>
-            <div>
-              <h4 class="text-xs font-bold text-nature-900">Lencana Pembaca Hijau 2026</h4>
-              <p class="text-[11px] text-nature-700 leading-snug mt-0.5">Dengan beralih kepada format digital, anda membantu Malaysia mencapai sasaran *Net Zero 2050*.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tips for Eco-Friendly Digital Reading -->
-        <div class="bg-white p-4 rounded-2xl shadow-card border border-nature-200/70 space-y-2.5">
-          <h4 class="text-xs font-bold text-nature-950 uppercase tracking-wider flex items-center gap-1.5">
-            <i class="fa-solid fa-lightbulb text-amber-500"></i> Amalan Membaca Lestari
-          </h4>
-          <ul class="text-xs text-nature-800 space-y-2">
-            <li class="flex items-start gap-2">
-              <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5 text-[11px]"></i>
-              <span>Gunakan mod gelap (Dark Mode) untuk menjimatkan bateri peranti OLED/AMOLED anda sehingga 30%.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5 text-[11px]"></i>
-              <span>Muat turun untuk bacaan luar talian (offline) bagi mengurangkan penggunaan data pelayan awan berterusan.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- VIEW: BOOKMARKS / SIMPANAN -->
+      <!-- TAB: BUKU DISIMPAN -->
       <div id="tabSaved" class="hidden p-4 space-y-3">
         <div class="flex items-center justify-between mb-1">
-          <h2 class="text-sm font-bold text-nature-950 flex items-center gap-1.5">
-            <i class="fa-solid fa-bookmark text-emerald-700"></i> E-Book Disimpan
+          <h2 class="text-sm font-bold text-ruby-950 font-serif">
+            Senarai Disimpan
           </h2>
-          <span id="savedCountText" class="text-xs text-nature-600 font-medium">0 Simpanan</span>
+          <span id="savedCountText" class="text-xs text-ruby-600 font-medium">0 Disimpan</span>
         </div>
 
-        <div id="savedListContainer" class="space-y-2.5">
-          <!-- Injected via JavaScript -->
+        <div id="savedContainer" class="space-y-2.5">
+          <!-- Kad simpanan disuntik melalui JS -->
         </div>
 
-        <div id="savedEmptyState" class="hidden text-center py-16 px-4">
-          <div class="w-14 h-14 bg-nature-100 text-nature-400 rounded-full flex items-center justify-center mx-auto mb-2.5">
-            <i class="fa-regular fa-bookmark text-xl"></i>
+        <div id="emptySaved" class="hidden text-center py-20 px-4">
+          <div class="w-12 h-12 bg-ruby-50 text-ruby-300 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa-regular fa-bookmark text-base"></i>
           </div>
-          <p class="font-bold text-nature-900 text-sm">Tiada buku disimpan lagi</p>
-          <p class="text-xs text-stone-500 mt-1">Tekan ikon penanda buku pada mana-mana e-book untuk rujukan pantas anda.</p>
+          <h4 class="font-serif font-bold text-ruby-950 text-sm">Tiada Naskhah Disimpan</h4>
+          <p class="text-xs text-ruby-400 mt-1">Tekan ikon penanda buku pada judul kegemaran untuk membacanya kemudian.</p>
         </div>
       </div>
 
     </main>
 
-    <nav class="absolute bottom-0 left-0 right-0 h-16 bg-white/95 backdrop-blur-md border-t border-nature-200/80 px-6 flex items-center justify-around z-30 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+    <nav class="absolute bottom-0 left-0 right-0 h-16 bg-softcream/95 backdrop-blur-md border-t border-ruby-100 px-8 flex items-center justify-around z-30">
+      
       <button 
-        id="navHome" 
-        onclick="app.switchTab('home')" 
-        class="flex flex-col items-center justify-center text-nature-700 font-bold transition scale-105"
+        id="navCatalog" 
+        onclick="app.switchTab('catalog')" 
+        class="flex flex-col items-center justify-center text-ruby-800 font-bold transition scale-105"
       >
-        <i class="fa-solid fa-compass text-base mb-1"></i>
+        <i class="fa-solid fa-book-open text-base mb-1"></i>
         <span class="text-[10px]">Katalog</span>
-      </button>
-
-      <button 
-        id="navImpact" 
-        onclick="app.switchTab('impact')" 
-        class="flex flex-col items-center justify-center text-stone-600 hover:text-nature-700 font-medium transition"
-      >
-        <i class="fa-solid fa-seedling text-base mb-1"></i>
-        <span class="text-[10px]">Impak Hijau</span>
       </button>
 
       <button 
         id="navSaved" 
         onclick="app.switchTab('saved')" 
-        class="flex flex-col items-center justify-center text-stone-600 hover:text-nature-700 font-medium transition relative"
+        class="flex flex-col items-center justify-center text-ruby-400 hover:text-ruby-700 font-medium transition relative"
       >
-        <span id="navSavedBadge" class="hidden absolute top-0 right-2 w-2 h-2 rounded-full bg-emerald-600"></span>
-        <i class="fa-solid fa-bookmark text-base mb-1"></i>
+        <span id="savedBadge" class="hidden absolute top-0 right-1 w-2 h-2 rounded-full bg-ruby-600"></span>
+        <i class="fa-regular fa-bookmark text-base mb-1"></i>
         <span class="text-[10px]">Simpanan</span>
       </button>
+
+      <a 
+        href="https://thebooklatte.com" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="flex flex-col items-center justify-center text-ruby-400 hover:text-ruby-700 font-medium transition no-underline"
+      >
+        <i class="fa-solid fa-store text-base mb-1"></i>
+        <span class="text-[10px]">Kedai Rasmi</span>
+      </a>
+
     </nav>
 
-    <div id="detailModal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm p-0 sm:p-4 transition-opacity">
-      <div id="modalBox" class="w-full sm:max-w-md bg-parchment rounded-t-[32px] sm:rounded-[32px] max-h-[88vh] flex flex-col overflow-hidden shadow-2xl border border-nature-200 animate-in slide-in-from-bottom duration-300">
+    <div id="detailModal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-ruby-950/40 backdrop-blur-xs p-0 sm:p-4">
+      <div class="w-full sm:max-w-md bg-softcream rounded-t-[32px] sm:rounded-[32px] max-h-[85vh] flex flex-col overflow-hidden shadow-2xl border border-ruby-100">
         
-        <!-- Modal Top Bar -->
-        <div class="px-5 pt-4 pb-2 flex items-center justify-between border-b border-nature-100 bg-white">
-          <div class="flex items-center space-x-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-            <span class="text-xs font-bold text-nature-900 tracking-wide uppercase">Maklumat E-Book</span>
-          </div>
-          <button onclick="app.closeModal()" class="w-8 h-8 rounded-full bg-nature-100 hover:bg-nature-200 text-nature-800 flex items-center justify-center transition">
-            <i class="fa-solid fa-xmark text-sm"></i>
+        <!-- Header Modal -->
+        <div class="px-5 py-3.5 flex items-center justify-between border-b border-ruby-100/80">
+          <span class="text-xs font-semibold text-ruby-900 uppercase tracking-wider">Perincian Naskhah</span>
+          <button onclick="app.closeModal()" class="w-7 h-7 rounded-full bg-ruby-50 hover:bg-ruby-100 text-ruby-700 flex items-center justify-center transition">
+            <i class="fa-solid fa-xmark text-xs"></i>
           </button>
         </div>
 
-        <!-- Modal Scrollable Content -->
+        <!-- Kandungan Modal -->
         <div class="p-5 overflow-y-auto space-y-4 text-left">
           
-          <!-- Book Header Row -->
           <div class="flex gap-4">
-            <!-- Simulated Book Cover -->
-            <div id="modalCover" class="w-24 h-34 rounded-xl flex-shrink-0 p-2.5 text-white flex flex-col justify-between shadow-md relative overflow-hidden">
-              <span class="text-[9px] font-bold uppercase opacity-80" id="modalCoverTag">Lestari</span>
-              <p class="text-xs font-bold leading-tight" id="modalCoverTitle">Judul Buku</p>
-              <span class="text-[8px] opacity-75" id="modalCoverAuthor">Penulis</span>
+            <div id="modalCover" class="w-24 h-36 rounded-xl flex-shrink-0 relative overflow-hidden shadow-soft bg-ruby-950 flex flex-col justify-between p-2.5 text-white book-spine-effect">
+              <img id="modalCoverImg" src="" alt="Book Cover" class="absolute inset-0 w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20"></div>
+              
+              <div class="relative z-10">
+                <span id="modalBadge" class="text-[8px] font-bold uppercase tracking-wider bg-ruby-800/90 backdrop-blur-xs px-1.5 py-0.5 rounded text-white inline-block">Hot</span>
+              </div>
+              <div class="relative z-10">
+                <p id="modalCoverTitle" class="text-[11px] font-semibold leading-tight line-clamp-2">Judul Buku</p>
+                <span id="modalCoverAuthor" class="text-[8px] opacity-80 block truncate mt-0.5">Penulis</span>
+              </div>
             </div>
 
-            <!-- Meta details -->
-            <div class="flex-1 flex flex-col justify-between">
+            <div class="flex-1 flex flex-col justify-between py-0.5">
               <div>
-                <span id="modalCategory" class="inline-block text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md mb-1">
+                <span id="modalCategory" class="inline-block text-[10px] font-semibold text-ruby-700 bg-ruby-50 border border-ruby-200/60 px-2 py-0.5 rounded-full mb-1">
                   Kategori
                 </span>
-                <h3 id="modalTitle" class="text-base font-extrabold text-nature-950 leading-snug">Tajuk E-Book</h3>
-                <p id="modalAuthor" class="text-xs text-nature-700 font-medium mt-0.5">Oleh: Nama Penulis</p>
+                <h3 id="modalTitle" class="text-sm font-serif font-bold text-ruby-950 leading-snug">Tajuk E-Book</h3>
+                <p id="modalAuthor" class="text-xs text-ruby-600 font-medium mt-0.5">Oleh Penulis</p>
               </div>
 
-              <div class="flex items-center gap-2 mt-2">
-                <div class="flex items-center text-amber-500 text-xs">
-                  <i class="fa-solid fa-star"></i>
-                  <span id="modalRating" class="font-bold text-nature-900 ml-1">4.9</span>
-                </div>
-                <span class="text-nature-300">•</span>
-                <span id="modalPages" class="text-xs text-nature-600 font-medium">240 ms</span>
-                <span class="text-nature-300">•</span>
-                <span id="modalFormat" class="text-[10px] bg-nature-200 text-nature-800 px-1.5 py-0.5 rounded font-bold uppercase">EPUB / PDF</span>
+              <div class="flex items-center gap-2 text-xs text-stone-500 pt-2">
+                <span id="modalPages">184 ms</span>
+                <span>•</span>
+                <span id="modalYear">Edisi 2026</span>
+                <span>•</span>
+                <span class="text-amber-600 font-semibold"><i class="fa-solid fa-star text-[10px] mr-0.5"></i> <span id="modalRating">4.9</span></span>
               </div>
 
-              <!-- Price & Eco Savings -->
-              <div class="flex items-center justify-between pt-2">
-                <span id="modalPrice" class="text-base font-black text-nature-900">RM 35.00</span>
-                <span id="modalEcoBonus" class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                  🌱 Jimat 1.2kg CO₂
-                </span>
+              <div class="pt-2">
+                <span id="modalPrice" class="text-base font-serif font-bold text-ruby-900">MYR 20.00</span>
               </div>
             </div>
           </div>
 
-          <!-- Eco Impact Guarantee Box -->
-          <div class="bg-nature-100/80 rounded-xl p-3 border border-nature-300/70 flex items-center gap-3">
-            <div class="w-8 h-8 rounded-lg bg-emerald-700 text-white flex items-center justify-center flex-shrink-0">
-              <i class="fa-solid fa-tree text-sm"></i>
-            </div>
-            <div>
-              <p class="text-[11px] font-bold text-nature-900">Pembelajaran Hijau & Tanpa Kertas</p>
-              <p class="text-[10px] text-nature-700">Membaca e-book di telefon atau tablet menjimatkan ratusan lembaran kertas nota dan buku rujukan fizikal.</p>
-            </div>
-          </div>
-
-          <!-- Synopsis -->
+          <!-- Penerangan Sinopsis -->
           <div>
-            <h4 class="text-xs font-bold text-nature-950 uppercase tracking-wider mb-1">Sinopsis & Ringkasan</h4>
+            <h4 class="text-xs font-bold text-ruby-950 uppercase tracking-wider mb-1">Sinopsis</h4>
             <p id="modalSynopsis" class="text-xs text-stone-600 leading-relaxed">
-              Penerangan ringkas mengenai buku ini...
+              Penerangan ringkas mengenai e-book ini...
             </p>
           </div>
 
-          <!-- Key Takeaways / Kandungan Utama -->
+          <!-- Sorotan Topik -->
           <div>
-            <h4 class="text-xs font-bold text-nature-950 uppercase tracking-wider mb-1.5">Topik Fokus & Bab Utama</h4>
+            <h4 class="text-xs font-bold text-ruby-950 uppercase tracking-wider mb-2">Fokus Utama</h4>
             <div id="modalHighlights" class="space-y-1.5 text-xs text-stone-700">
-              <!-- Injected dynamically -->
+              <!-- Sorotan topik disuntik JS -->
             </div>
           </div>
 
         </div>
 
-        <!-- Modal Bottom Actions -->
-        <div class="p-4 bg-white border-t border-nature-200 flex items-center gap-2.5">
+        <!-- Butang Tindakan Modal -->
+        <div class="p-4 bg-white border-t border-ruby-100 flex items-center gap-2.5">
           <button 
             id="modalBookmarkBtn" 
             onclick="app.toggleBookmarkFromModal()"
-            class="px-3.5 py-3 rounded-xl border border-nature-300 hover:bg-nature-50 text-nature-800 transition flex items-center justify-center"
-            title="Simpan Buku"
+            class="w-11 h-11 rounded-xl border border-ruby-200 hover:bg-ruby-50 text-ruby-800 transition flex items-center justify-center flex-shrink-0"
+            title="Simpan"
           >
-            <i id="modalBookmarkIcon" class="fa-regular fa-bookmark text-base"></i>
-          </button>
-          
-          <button 
-            onclick="app.simulateSampleRead()"
-            class="flex-1 py-3 px-3 bg-nature-100 hover:bg-nature-200 text-nature-900 font-bold rounded-xl text-xs transition flex items-center justify-center gap-1.5 border border-nature-300"
-          >
-            <i class="fa-solid fa-eye text-nature-700"></i> Baca Sinopsis
+            <i id="modalBookmarkIcon" class="fa-regular fa-bookmark text-sm"></i>
           </button>
 
           <a 
@@ -465,29 +359,26 @@
             href="https://thebooklatte.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            onclick="app.handleBuyClick(event)"
-            class="flex-1 py-3 px-3 bg-emerald-700 hover:bg-emerald-800 active:scale-95 text-white font-bold rounded-xl text-xs shadow-md shadow-emerald-900/20 transition flex items-center justify-center gap-1.5 text-center cursor-pointer no-underline"
+            class="flex-1 h-11 bg-ruby-800 hover:bg-ruby-900 active:scale-98 text-white font-semibold rounded-xl text-xs shadow-soft transition flex items-center justify-center gap-2 no-underline"
           >
-            <i class="fa-solid fa-cart-shopping"></i> Beli di BookLatte <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-0.5"></i>
+            <span>Beli di BookLatte</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
           </a>
         </div>
 
       </div>
     </div>
 
-    <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-nature-950 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-2xl border border-emerald-500/30 flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300">
-      <i id="toastIcon" class="fa-solid fa-check text-emerald-400"></i>
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-ruby-950 text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-xl flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300">
+      <i id="toastIcon" class="fa-solid fa-check text-ruby-300"></i>
       <span id="toastMsg">Mesej berjaya</span>
     </div>
 
   </div>
 
   <script>
-    /**
-     * STREAMING_CHUNK:Populating thebooklatte.com motivation books dataset
-     * E-books retrieved directly from www.thebooklatte.com catalog
-     */
-    const booksData = [
+    const books = [
       {
         id: "EA3852",
         title: "PELAJAR CEMERLANG SPM 9A",
@@ -499,17 +390,15 @@
         pages: 184,
         price: "MYR 20.00",
         originalPrice: "MYR 40.00",
-        bookId: "EA3852",
-        format: "E-Book Rasmi (thebooklatte.com)",
-        co2Saved: "1.2 kg",
-        coverClass: "cover-gradient-2",
-        badge: "Hot Seller",
+        coverClass: "book-cover-1",
+        coverImage: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80",
+        badge: "Paling Laris",
         bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=19521",
-        synopsis: "Panduan khusus membakar semangat dan strategi ampuh bagi calon SPM mencapai keputusan cemerlang 9A. Mengupas rahsia pengurusan masa, teknik ulangkaji berkesan, disiplin diri, serta doa dan adab bersama guru dan ibu bapa untuk memperoleh keberkatan ilmu.",
+        synopsis: "Panduan praktikal dan suntikan semangat khusus buat calon SPM untuk membina disiplin belajar, menguasai pengurusan masa berkesan, dan memperkukuh keyakinan diri menjelang peperiksaan besar.",
         highlights: [
-          "Jadual belajar berfokus menjelang bulan-bulan genting SPM.",
-          "Teknik memecah ketakutan subjek sukar dan mengurus tekanan exam.",
-          "Strategi skor A+ melalui latih tubi soalan ramalan bertarget."
+          "Jadual ulangkaji fokus menjelang bulan genting peperiksaan.",
+          "Teknik membina ketahanan mental dan mengatasi rasa gementar.",
+          "Latihan berpandu menembusi gred A+ dengan strategi soalan ramalan."
         ]
       },
       {
@@ -523,17 +412,15 @@
         pages: 210,
         price: "MYR 12.00",
         originalPrice: "MYR 24.00",
-        bookId: "EA3877",
-        format: "E-Book Rasmi (thebooklatte.com)",
-        co2Saved: "1.4 kg",
-        coverClass: "cover-gradient-1",
-        badge: "Pilihan Pelajar",
+        coverClass: "book-cover-2",
+        coverImage: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80",
+        badge: "Pilihan Utama",
         bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=19545",
-        synopsis: "Kejayaan dalam peperiksaan bermula dari minda yang kental dan positif. Penulis merungkai psikologi pelajar juara, bagaimana membina keyakinan tinggi apabila melangkah masuk ke dewan peperiksaan, dan mengatasi perasaan putus asa apabila markah percubaan tidak memuaskan.",
+        synopsis: "Membongkar rahsia psikologi pelajar cemerlang. Bagaimana mengawal fokus, menolak sikap menangguh, dan membina keyakinan tinggi apabila melangkah masuk ke bilik peperiksaan.",
         highlights: [
-          "Psikologi membina minda juara (Champion's Mindset) sebelum peperiksaan.",
-          "Menghapuskan tabiat suka menangguh kerja dan 'burnout' belajar.",
-          "Visualisasi kejayaan dan pengurusan stres mental."
+          "Membina kerangka pemikiran juara (Champion's Mindset).",
+          "Menghapuskan tabiat malas dan sindrom kelesuan belajar.",
+          "Teknik visualisasi kejayaan dan kawalan emosi tenang."
         ]
       },
       {
@@ -541,23 +428,21 @@
         title: "GURU PEMBINA IMPIAN PELAJAR MENCIPTA KEJAYAAN",
         author: "ROSNI ADOM",
         year: "2026",
-        category: "Bimbingan Guru & Ibu Bapa",
+        category: "Bimbingan Pendidik",
         rating: 4.8,
         reviewsCount: 92,
         pages: 196,
         price: "MYR 20.00",
         originalPrice: "MYR 40.00",
-        bookId: "ER2133",
-        format: "E-Book Rasmi (thebooklatte.com)",
-        co2Saved: "1.3 kg",
-        coverClass: "cover-gradient-4",
+        coverClass: "book-cover-3",
+        coverImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80",
         badge: "Inspirasi",
         bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=5298",
-        synopsis: "Karya penuh inspirasi yang membimbing guru, pendidik dan ibu bapa menjadi pemangkin serta pencetus semangat anak didik. Membantu pelajar yang hampir berputus asa kembali melihat potensi sebenar dalam diri mereka untuk mencipta masa depan gemilang.",
+        synopsis: "Karya inspirasi yang mengupas peranan bermakna guru dan pendidik dalam mencungkil bakat terpendam pelajar, menyemarakkan keyakinan anak didik yang hampir berputus asa.",
         highlights: [
-          "Sentuhan psikologi guru dalam menyuntik impian besar kepada pelajar.",
-          "Membimbing pelajar berprestasi sederhana menjadi berdaya saing.",
-          "Membina hubungan harmoni antara guru, ibu bapa, dan murid."
+          "Sentuhan psikologi guru dalam membangkitkan impian murid.",
+          "Bimbingan khusus buat pelajar yang memerlukan dorongan tambahan.",
+          "Kolaborasi harmoni antara guru, ibu bapa dan pelajar."
         ]
       },
       {
@@ -571,22 +456,20 @@
         pages: 140,
         price: "MYR 8.00",
         originalPrice: "MYR 40.00",
-        bookId: "ED2494",
-        format: "E-Book Rasmi (thebooklatte.com)",
-        co2Saved: "0.9 kg",
-        coverClass: "cover-gradient-3",
-        badge: "Diskaun Khas",
+        coverClass: "book-cover-4",
+        coverImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
+        badge: "Kesihatan Minda",
         bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=16211",
-        synopsis: "Panduan kesihatan mental dan emosi untuk pelajar sekolah serta penuntut universiti yang menghadapi keletihan skrin (digital fatigue) dan tekanan pembelajaran jarak jauh atau kendiri. Diterangkan secara ringkas, padat dan mudah dipraktikkan.",
+        synopsis: "Panduan ringkas dan padat untuk pelajar sekolah serta universiti mengatasi kepenatan skrin peranti, mengurangkan tekanan tugasan, dan mengekalkan produktiviti yang sihat.",
         highlights: [
-          "Teknik senaman regangan dan rehat mata di meja belajar.",
-          "Mengimbangi waktu antara media sosial dan fokus ulangkaji.",
-          "Mengekalkan fokus berpanjangan tanpa rasa lesu."
+          "Teknik penjagaan fokus tanpa kelesuan mata.",
+          "Mengurus sempadan antara gajet, media sosial dan ulangkaji.",
+          "Senaman regangan dan pernafasan mudah di meja belajar."
         ]
       },
       {
         id: "EA3741",
-        title: "AMALAN PEMAKANAN & KECEMERLANGAN MINDA (Edisi Ke-2)",
+        title: "AMALAN PEMAKANAN & KECEMERLANGAN MINDA",
         author: "JAY TASRIFF",
         year: "2026",
         category: "Kecergasan Minda",
@@ -595,17 +478,15 @@
         pages: 160,
         price: "MYR 12.00",
         originalPrice: "MYR 24.00",
-        bookId: "EA3741",
-        format: "E-Book Rasmi (thebooklatte.com)",
-        co2Saved: "1.1 kg",
-        coverClass: "cover-gradient-2",
+        coverClass: "book-cover-5",
+        coverImage: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80",
         badge: "Edisi Baharu",
         bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=19545",
-        synopsis: "Otak yang cergas memerlukan nutrisi yang tepat. E-book ini membongkar rahsia pemakanan semula jadi dan herba tempatan yang terbukti meningkatkan daya ingatan, ketahanan fokus ketika belajar berjam-jam, dan kesihatan optimum pelajar.",
+        synopsis: "Kecerdasan minda berkait rapat dengan nutrisi seimbang. Menghuraikan panduan diet sihat yang membantu daya ingatan, ketahanan tumpuan, dan tenaga mental pelajar.",
         highlights: [
-          "Makanan terbaik untuk memori jangka panjang sebelum peperiksaan.",
-          "Menu mudah dan berkhasiat untuk sarapan pagi pelajar.",
-          "Menghindari makanan yang menyebabkan rasa mengantuk di dalam kelas."
+          "Makanan terbaik untuk menyokong memori jangka panjang.",
+          "Pemilihan sarapan pagi bertenaga bagi mengelakkan rasa mengantuk.",
+          "Amalan hidrasi optimum semasa mengulang kaji pelajaran."
         ]
       },
       {
@@ -613,47 +494,43 @@
         title: "MULAKAN CITA-CITA DENGAN NIAT",
         author: "JAY TASRIFF",
         year: "2026",
-        category: "Pelajar & Remaja",
+        category: "Pembangunan Diri",
         rating: 4.9,
         reviewsCount: 95,
         pages: 175,
         price: "MYR 12.00",
         originalPrice: "MYR 24.00",
-        bookId: "EJ2011",
-        format: "E-Book Rasmi (thebooklatte.com)",
-        co2Saved: "1.2 kg",
-        coverClass: "cover-gradient-5",
-        badge: "Terkini 2026",
+        coverClass: "book-cover-6",
+        coverImage: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80",
+        badge: "Edisi 2026",
         bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=19545",
-        synopsis: "Buku panduan motivasi dan penataan matlamat hidup untuk remaja serta belia. Mengajar langkah demi langkah bagaimana menetapkan niat yang ikhlas, membina hala tuju kerjaya masa depan, serta mengekalkan konsistensi usaha walau diasak cabaran.",
+        synopsis: "Panduan membina hala tuju hidup yang jelas bagi remaja dan belia. Menghubungkan niat yang ikhlas dengan tindakan terancang ke arah kerjaya dan impian masa depan.",
         highlights: [
-          "Formula menetapkan matlamat hidup yang jelas dan bermakna.",
-          "Menghubungkan niat belajar dengan bakti kepada ibu bapa dan masyarakat.",
-          "Latihan praktikal carta impian (Dream Board) untuk pelajar."
+          "Formula menetapkan matlamat hidup yang bermakna.",
+          "Membina jati diri dan ketahanan mental menghadapi cabaran.",
+          "Panduan membina pelan tindakan kejayaan tahunan."
         ]
       },
       {
         id: "ED2671",
-        title: "NOTA MOTIVASI: MEMBINA KEKUATAN JIWA DAN SEMANGAT HIDUP",
+        title: "NOTA MOTIVASI: MEMBINA KEKUATAN JIWA",
         author: "Dr Hanihaselah Mohd Saleh",
         year: "2026",
-        category: "Pelajar & Remaja",
+        category: "Pembangunan Diri",
         rating: 4.8,
         reviewsCount: 63,
         pages: 155,
         price: "MYR 8.00",
         originalPrice: "MYR 16.00",
-        bookId: "ED2671",
-        format: "E-Book Rasmi (thebooklatte.com)",
-        co2Saved: "1.0 kg",
-        coverClass: "cover-gradient-6",
-        badge: "Pemberi Semangat",
+        coverClass: "book-cover-2",
+        coverImage: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80",
+        badge: "Ketenangan",
         bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=19305",
-        synopsis: "Himpunan mutiara kata, renungan jiwa dan motivasi pemulihan semangat buat pelajar yang sedang berdepan ujian kegagalan, kesedihan atau kelesuan emosi. Menyuntik aura ketenangan dan harapan baharu untuk kembali bangkit.",
+        synopsis: "Himpunan catatan renungan jiwa buat pelajar yang sedang berdepan tekanan atau kekecewaan, memberi ketenangan dan dorongan untuk bangkit kembali dengan tekad baharu.",
         highlights: [
-          "Membina ketahanan emosi (Resilience) menghadapi kegagalan.",
-          "Terapi minda dan doa penenang jiwa tatkala kebuntuan.",
-          "Refleksi harian untuk membina kekuatan dalaman yang berkekalan."
+          "Membina kekuatan dalaman tatkala berdepan kegagalan.",
+          "Ketenangan emosi dan kelegaan minda yang terbeban.",
+          "Refleksi harian untuk membina keyakinan diri berkekalan."
         ]
       },
       {
@@ -661,42 +538,39 @@
         title: "SENI KAWALAN KELAS BUAT GURU BAHARU",
         author: "AAA Penulis",
         year: "2026",
-        category: "Bimbingan Guru & Ibu Bapa",
+        category: "Bimbingan Pendidik",
         rating: 4.7,
         reviewsCount: 52,
         pages: 148,
         price: "MYR 11.16",
         originalPrice: "MYR 12.40",
-        bookId: "EA3901",
-        format: "E-Book Rasmi (thebooklatte.com)",
-        co2Saved: "0.9 kg",
-        coverClass: "cover-gradient-4",
-        badge: "Panduan Pendidik",
+        coverClass: "book-cover-4",
+        coverImage: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80",
+        badge: "Panduan Guru",
         bookUrl: "https://thebooklatte.com/Dw_dtList.aspx?qCatId=5298",
-        synopsis: "Panduan praktikal buat guru pelatih dan guru baharu dalam membina suasana kelas yang ceria, berdisiplin serta mendorong minat murid untuk belajar tanpa perlu menggunakan kekerasan atau jeritan.",
+        synopsis: "Panduan praktikal guru baharu membina suasana bilik darjah yang kondusif, berdisiplin serta menceriakan murid tanpa perlu menggunakan kaedah leteran atau kekerasan.",
         highlights: [
-          "Kaedah mewujudkan peraturan bilik darjah yang dipersetujui bersama pelajar.",
-          "Teknik menarik perhatian murid pasif dan mengurus murid hiperaktif.",
-          "Aktiviti 'ice-breaking' dan pengajaran interaktif abad ke-21."
+          "Strategi kawalan kelas yang positif dan dihormati pelajar.",
+          "Menarik minat murid pasif ke dalam perbincangan pembelajaran.",
+          "Membina hubungan mesra dan saling menghormati antara guru dan murid."
         ]
       }
     ];
 
     const categories = [
-      "Semua Kategori",
+      "Semua",
       "Motivasi & Peperiksaan",
-      "Pelajar & Remaja",
       "Kecergasan Minda",
-      "Bimbingan Guru & Ibu Bapa"
+      "Pembangunan Diri",
+      "Bimbingan Pendidik"
     ];
 
-    class EcoReadsApp {
+    class BookLatteCleanApp {
       constructor() {
-        this.books = booksData;
-        this.activeCategory = "Semua Kategori";
+        this.books = books;
+        this.activeCategory = "Semua";
         this.searchQuery = "";
-        this.activeTab = "home";
-        this.savedBookIds = new Set(JSON.parse(localStorage.getItem('ecoreads_bookmarks') || '[]'));
+        this.savedIds = new Set(JSON.parse(localStorage.getItem('booklatte_saved') || '[]'));
         this.activeModalBook = null;
 
         this.init();
@@ -704,86 +578,66 @@
 
       init() {
         this.renderCategories();
-        this.renderBooks();
-        this.renderSavedBooks();
+        this.renderCatalog();
+        this.renderSavedList();
         this.updateSavedBadge();
       }
 
-      switchTab(tabName) {
-        this.activeTab = tabName;
-
-        const tabHome = document.getElementById('tabHome');
-        const tabImpact = document.getElementById('tabImpact');
+      switchTab(tab) {
+        const tabCatalog = document.getElementById('tabCatalog');
         const tabSaved = document.getElementById('tabSaved');
+        const navCatalog = document.getElementById('navCatalog');
+        const navSaved = document.getElementById('navSaved');
 
-        tabHome.classList.add('hidden');
-        tabImpact.classList.add('hidden');
-        tabSaved.classList.add('hidden');
-
-        // Nav active state classes
-        const navItems = {
-          home: document.getElementById('navHome'),
-          impact: document.getElementById('navImpact'),
-          saved: document.getElementById('navSaved')
-        };
-
-        Object.keys(navItems).forEach(key => {
-          const btn = navItems[key];
-          if (key === tabName) {
-            btn.className = "flex flex-col items-center justify-center text-nature-800 font-bold transition scale-105";
-          } else {
-            btn.className = "flex flex-col items-center justify-center text-stone-600 hover:text-nature-700 font-medium transition";
-          }
-        });
-
-        if (tabName === 'home') {
-          tabHome.classList.remove('hidden');
-        } else if (tabName === 'impact') {
-          tabImpact.classList.remove('hidden');
-        } else if (tabName === 'saved') {
+        if (tab === 'catalog') {
+          tabCatalog.classList.remove('hidden');
+          tabSaved.classList.add('hidden');
+          navCatalog.className = "flex flex-col items-center justify-center text-ruby-800 font-bold transition scale-105";
+          navSaved.className = "flex flex-col items-center justify-center text-ruby-400 hover:text-ruby-700 font-medium transition relative";
+        } else {
+          tabCatalog.classList.add('hidden');
           tabSaved.classList.remove('hidden');
-          this.renderSavedBooks();
+          navCatalog.className = "flex flex-col items-center justify-center text-ruby-400 hover:text-ruby-700 font-medium transition";
+          navSaved.className = "flex flex-col items-center justify-center text-ruby-800 font-bold transition scale-105 relative";
+          this.renderSavedList();
         }
-
-        // Scroll top on switch
         document.getElementById('mainContainer').scrollTop = 0;
       }
 
       renderCategories() {
-        const catContainer = document.getElementById('categoryList');
-        catContainer.innerHTML = categories.map(cat => {
+        const container = document.getElementById('categoryContainer');
+        container.innerHTML = categories.map(cat => {
           const isActive = this.activeCategory === cat;
-          const activeClasses = isActive 
-            ? "bg-nature-800 text-emerald-200 border-nature-700 shadow-sm" 
-            : "bg-white text-stone-700 border-stone-200 hover:bg-stone-50";
-          
+          const styles = isActive 
+            ? "bg-ruby-800 text-white font-semibold shadow-xs" 
+            : "bg-white text-ruby-900 border border-ruby-100 hover:bg-ruby-50";
+
           return `
             <button 
-              onclick="app.selectCategory('${cat}')" 
-              class="px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap border transition-all duration-200 ${activeClasses}"
+              onclick="app.setCategory('${cat}')" 
+              class="px-3.5 py-1.5 rounded-full text-xs whitespace-nowrap transition-all duration-200 ${styles}"
             >
-              ${cat === "Semua Kategori" ? '<i class="fa-solid fa-layer-group mr-1.5 text-[10px]"></i>' : ''}
               ${cat}
             </button>
           `;
         }).join('');
       }
 
-      selectCategory(cat) {
+      setCategory(cat) {
         this.activeCategory = cat;
         this.renderCategories();
-        this.renderBooks();
+        this.renderCatalog();
       }
 
-      handleSearch(query) {
-        this.searchQuery = query.trim().toLowerCase();
+      handleSearch(val) {
+        this.searchQuery = val.trim().toLowerCase();
         const clearBtn = document.getElementById('clearSearchBtn');
-        if (this.searchQuery.length > 0) {
+        if (this.searchQuery) {
           clearBtn.classList.remove('hidden');
         } else {
           clearBtn.classList.add('hidden');
         }
-        this.renderBooks();
+        this.renderCatalog();
       }
 
       clearSearch() {
@@ -792,27 +646,27 @@
       }
 
       resetFilter() {
-        this.activeCategory = "Semua Kategori";
+        this.activeCategory = "Semua";
         this.clearSearch();
         this.renderCategories();
-        this.renderBooks();
+        this.renderCatalog();
       }
 
-      renderBooks() {
+      renderCatalog() {
         const grid = document.getElementById('booksGrid');
-        const emptyState = document.getElementById('emptyState');
-        const bookCountText = document.getElementById('bookCountText');
+        const emptyState = document.getElementById('emptyCatalog');
+        const countLabel = document.getElementById('catalogCount');
 
-        let filtered = this.books.filter(b => {
-          const matchesCat = this.activeCategory === "Semua Kategori" || b.category === this.activeCategory;
-          const matchesSearch = !this.searchQuery || 
+        const filtered = this.books.filter(b => {
+          const matchCat = this.activeCategory === "Semua" || b.category === this.activeCategory;
+          const matchSearch = !this.searchQuery || 
             b.title.toLowerCase().includes(this.searchQuery) ||
             b.author.toLowerCase().includes(this.searchQuery) ||
             b.category.toLowerCase().includes(this.searchQuery);
-          return matchesCat && matchesSearch;
+          return matchCat && matchSearch;
         });
 
-        bookCountText.innerText = `${filtered.length} E-Book Dijumpai`;
+        countLabel.innerText = `${filtered.length} Naskhah`;
 
         if (filtered.length === 0) {
           grid.innerHTML = "";
@@ -822,96 +676,95 @@
 
         emptyState.classList.add('hidden');
 
-        grid.innerHTML = filtered.map(book => {
-          const isSaved = this.savedBookIds.has(book.id);
+        grid.innerHTML = filtered.map(b => {
+          const isSaved = this.savedIds.has(b.id);
           return `
-            <div class="bg-white rounded-2xl p-3 shadow-card border border-stone-200/90 flex flex-col justify-between hover:shadow-eco hover:border-emerald-300 transition-all duration-200 group">
+            <div class="bg-white rounded-2xl p-2.5 shadow-card border border-ruby-100/60 flex flex-col justify-between hover:shadow-soft hover:border-ruby-200 transition-all duration-300 group">
               <div>
-                <!-- Mock Book Cover with Natural Palette -->
-                <div class="${book.coverClass} h-36 rounded-xl p-2.5 text-white flex flex-col justify-between relative overflow-hidden shadow-inner cursor-pointer" onclick="app.openModal('${book.id}')">
-                  <!-- Subtle leaf pattern watermark -->
-                  <div class="absolute -right-3 -bottom-3 text-white/10 text-5xl pointer-events-none">
-                    <i class="fa-solid fa-leaf"></i>
-                  </div>
+                <!-- Muka Depan E-Book dengan Imej Visual & Efek Tulang Buku -->
+                <div class="h-44 rounded-xl relative cursor-pointer overflow-hidden shadow-sm book-spine-effect ${b.coverClass}" onclick="app.openModal('${b.id}')">
                   
-                  <div class="flex justify-between items-start z-10">
-                    <span class="text-[9px] font-bold uppercase tracking-wider bg-black/40 backdrop-blur-xs px-1.5 py-0.5 rounded text-emerald-200">
-                      ${book.badge}
-                    </span>
-                    <button 
-                      onclick="event.stopPropagation(); app.toggleBookmark('${book.id}')" 
-                      class="w-6 h-6 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center text-white backdrop-blur-sm transition"
-                      title="Simpan"
-                    >
-                      <i class="${isSaved ? 'fa-solid text-emerald-300' : 'fa-regular text-white'} fa-bookmark text-xs"></i>
-                    </button>
-                  </div>
+                  <!-- Imej Sampul Buku -->
+                  <img 
+                    src="${b.coverImage}" 
+                    alt="${b.title}" 
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    onerror="this.style.opacity='0'"
+                  >
 
-                  <div class="z-10">
-                    <h4 class="text-xs font-bold leading-snug line-clamp-2 drop-shadow-sm">${book.title}</h4>
-                    <p class="text-[9px] text-white/80 mt-1 line-clamp-1">${book.author}</p>
+                  <!-- Lapisan Gradien Elegan untuk Ketegasan Teks -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/30"></div>
+
+                  <div class="relative z-10 h-full p-2.5 flex flex-col justify-between text-white">
+                    <div class="flex justify-between items-start">
+                      <span class="text-[8px] font-semibold uppercase tracking-wider bg-ruby-900/80 backdrop-blur-md px-2 py-0.5 rounded-full text-white/95 border border-white/10 shadow-xs">
+                        ${b.badge}
+                      </span>
+                      <button 
+                        onclick="event.stopPropagation(); app.toggleBookmark('${b.id}')"
+                        class="w-6 h-6 rounded-full bg-black/40 hover:bg-ruby-700/80 backdrop-blur-md flex items-center justify-center text-white transition active:scale-90"
+                        title="Simpan"
+                      >
+                        <i class="${isSaved ? 'fa-solid text-ruby-300' : 'fa-regular text-white'} fa-bookmark text-[11px]"></i>
+                      </button>
+                    </div>
+
+                    <div>
+                      <h4 class="text-xs font-semibold leading-tight line-clamp-2 text-white drop-shadow-sm">${b.title}</h4>
+                      <p class="text-[9px] text-white/80 mt-0.5 line-clamp-1 font-light">${b.author}</p>
+                    </div>
                   </div>
                 </div>
 
-                <!-- Book Metadata -->
-                <div class="mt-2.5 space-y-1">
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-emerald-700 font-bold bg-emerald-50 px-1.5 py-0.5 rounded flex items-center gap-1 border border-emerald-100">
-                      <i class="fa-solid fa-seedling text-[9px]"></i> -${book.co2Saved} CO₂
-                    </span>
-                    <div class="flex items-center text-amber-500 font-semibold text-[10px]">
-                      <i class="fa-solid fa-star text-[9px] mr-1"></i> ${book.rating}
-                    </div>
-                  </div>
-
-                  <h3 onclick="app.openModal('${book.id}')" class="text-xs font-bold text-stone-900 line-clamp-2 cursor-pointer hover:text-emerald-800 transition pt-0.5 leading-snug">
-                    ${book.title}
+                <div class="mt-2.5 space-y-0.5">
+                  <p class="text-[10px] text-ruby-600 font-medium">${b.category}</p>
+                  <h3 onclick="app.openModal('${b.id}')" class="text-xs font-semibold text-ruby-950 line-clamp-2 hover:text-ruby-700 transition cursor-pointer leading-snug">
+                    ${b.title}
                   </h3>
-                  
-                  <p class="text-[10px] text-stone-500 line-clamp-1">${book.category}</p>
                 </div>
               </div>
 
-              <!-- Price & Quick Detail Trigger -->
-              <div class="mt-3 pt-2 border-t border-stone-100 flex items-center justify-between">
-                <span class="text-xs font-extrabold text-nature-950">${book.price}</span>
+              <div class="mt-3 pt-2 border-t border-ruby-50 flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-bold text-ruby-950">${b.price}</span>
+                  <span class="text-[9px] text-stone-400 line-through block leading-none">${b.originalPrice}</span>
+                </div>
                 <div class="flex items-center gap-1.5">
                   <a 
-                    href="${book.bookUrl}" 
+                    href="${b.bookUrl}" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    onclick="event.stopPropagation(); app.showToast('Membuka paparan thebooklatte.com...', 'fa-arrow-up-right-from-square');" 
-                    class="p-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg transition flex items-center justify-center"
-                    title="Beli terus di thebooklatte.com (Paparan Baharu)"
+                    class="w-7 h-7 bg-ruby-800 hover:bg-ruby-900 active:scale-95 text-white rounded-lg flex items-center justify-center transition shadow-xs"
+                    title="Beli Sekarang"
                   >
-                    <i class="fa-solid fa-cart-shopping text-[10px]"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
                   </a>
                   <button 
-                    onclick="app.openModal('${book.id}')" 
-                    class="px-2.5 py-1 bg-nature-100 hover:bg-nature-200 text-nature-900 text-[10px] font-bold rounded-lg transition flex items-center gap-1"
+                    onclick="app.openModal('${b.id}')"
+                    class="px-2 py-1 bg-ruby-50 hover:bg-ruby-100 text-ruby-800 text-[10px] font-semibold rounded-lg transition"
                   >
-                    Info <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                    Info
                   </button>
                 </div>
               </div>
-
             </div>
           `;
         }).join('');
       }
 
-      toggleBookmark(bookId) {
-        if (this.savedBookIds.has(bookId)) {
-          this.savedBookIds.delete(bookId);
+      toggleBookmark(id) {
+        if (this.savedIds.has(id)) {
+          this.savedIds.delete(id);
           this.showToast("Dikeluarkan dari simpanan.");
         } else {
-          this.savedBookIds.add(bookId);
-          this.showToast("E-Book berjaya disimpan!", "fa-bookmark");
+          this.savedIds.add(id);
+          this.showToast("E-book berjaya disimpan!", "fa-bookmark");
         }
-        
-        localStorage.setItem('ecoreads_bookmarks', JSON.stringify([...this.savedBookIds]));
-        this.renderBooks();
-        this.renderSavedBooks();
+
+        localStorage.setItem('booklatte_saved', JSON.stringify([...this.savedIds]));
+        this.renderCatalog();
+        this.renderSavedList();
         this.updateSavedBadge();
       }
 
@@ -923,36 +776,32 @@
       }
 
       updateModalBookmarkIcon() {
-        const icon = document.getElementById('modalBookmarkIcon');
-        const btn = document.getElementById('modalBookmarkBtn');
         if (!this.activeModalBook) return;
-
-        const isSaved = this.savedBookIds.has(this.activeModalBook.id);
+        const icon = document.getElementById('modalBookmarkIcon');
+        const isSaved = this.savedIds.has(this.activeModalBook.id);
         if (isSaved) {
-          icon.className = "fa-solid fa-bookmark text-base text-emerald-700";
-          btn.className = "px-3.5 py-3 rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-800 transition flex items-center justify-center";
+          icon.className = "fa-solid fa-bookmark text-sm text-ruby-600";
         } else {
-          icon.className = "fa-regular fa-bookmark text-base text-nature-800";
-          btn.className = "px-3.5 py-3 rounded-xl border border-nature-300 hover:bg-nature-50 text-nature-800 transition flex items-center justify-center";
+          icon.className = "fa-regular fa-bookmark text-sm text-ruby-800";
         }
       }
 
       updateSavedBadge() {
-        const badge = document.getElementById('navSavedBadge');
-        if (this.savedBookIds.size > 0) {
+        const badge = document.getElementById('savedBadge');
+        if (this.savedIds.size > 0) {
           badge.classList.remove('hidden');
         } else {
           badge.classList.add('hidden');
         }
       }
 
-      renderSavedBooks() {
-        const container = document.getElementById('savedListContainer');
-        const emptyState = document.getElementById('savedEmptyState');
-        const savedCountText = document.getElementById('savedCountText');
+      renderSavedList() {
+        const container = document.getElementById('savedContainer');
+        const emptyState = document.getElementById('emptySaved');
+        const countText = document.getElementById('savedCountText');
 
-        const savedBooks = this.books.filter(b => this.savedBookIds.has(b.id));
-        savedCountText.innerText = `${savedBooks.length} Simpanan`;
+        const savedBooks = this.books.filter(b => this.savedIds.has(b.id));
+        countText.innerText = `${savedBooks.length} Disimpan`;
 
         if (savedBooks.length === 0) {
           container.innerHTML = "";
@@ -962,137 +811,111 @@
 
         emptyState.classList.add('hidden');
 
-        container.innerHTML = savedBooks.map(book => {
-          return `
-            <div class="bg-white p-3 rounded-2xl border border-stone-200 shadow-sm flex items-center justify-between gap-3">
-              <div class="flex items-center gap-3 flex-1 min-w-0" onclick="app.openModal('${book.id}')">
-                <div class="${book.coverClass} w-12 h-16 rounded-lg text-white p-1.5 flex flex-col justify-end flex-shrink-0 cursor-pointer shadow-sm">
-                  <span class="text-[8px] font-bold line-clamp-1 leading-tight">${book.title}</span>
-                </div>
-                <div class="min-w-0 flex-1 cursor-pointer">
-                  <h4 class="text-xs font-bold text-stone-900 truncate">${book.title}</h4>
-                  <p class="text-[10px] text-stone-500">${book.author}</p>
-                  <div class="flex items-center gap-2 mt-1">
-                    <span class="text-xs font-extrabold text-nature-800">${book.price}</span>
-                    <span class="text-[9px] text-emerald-700 bg-emerald-50 px-1 rounded font-semibold">🌱 -${book.co2Saved}</span>
-                  </div>
-                </div>
+        container.innerHTML = savedBooks.map(b => `
+          <div class="bg-white p-3 rounded-2xl border border-ruby-100/70 shadow-card flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3 flex-1 min-w-0 cursor-pointer" onclick="app.openModal('${b.id}')">
+              
+              <!-- Thumbnail Gambar Buku -->
+              <div class="w-11 h-15 rounded-lg flex-shrink-0 relative overflow-hidden shadow-xs bg-ruby-950 book-spine-effect">
+                <img src="${b.coverImage}" alt="${b.title}" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/20"></div>
               </div>
+
+              <div class="min-w-0 flex-1">
+                <h4 class="text-xs font-semibold text-ruby-950 truncate">${b.title}</h4>
+                <p class="text-[10px] text-ruby-600 mt-0.5 truncate">${b.author}</p>
+                <span class="text-xs font-bold text-ruby-900 mt-1 inline-block">${b.price}</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-1.5 flex-shrink-0">
+              <a 
+                href="${b.bookUrl}" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="w-7 h-7 bg-ruby-800 hover:bg-ruby-900 text-white rounded-lg flex items-center justify-center transition shadow-xs"
+                title="Beli di BookLatte"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+              </a>
               <button 
-                onclick="app.toggleBookmark('${book.id}')" 
-                class="w-8 h-8 rounded-full bg-stone-100 hover:bg-red-50 text-stone-600 hover:text-red-500 flex items-center justify-center transition flex-shrink-0"
+                onclick="app.toggleBookmark('${b.id}')" 
+                class="w-7 h-7 bg-ruby-50 hover:bg-red-50 text-ruby-400 hover:text-red-500 rounded-lg flex items-center justify-center transition"
                 title="Padam"
               >
-                <i class="fa-solid fa-trash-can text-xs"></i>
+                <i class="fa-regular fa-trash-can text-xs"></i>
               </button>
             </div>
-          `;
-        }).join('');
+          </div>
+        `).join('');
       }
 
-      openModal(bookId) {
-        const book = this.books.find(b => b.id === bookId);
+      openModal(id) {
+        const book = this.books.find(b => b.id === id);
         if (!book) return;
 
         this.activeModalBook = book;
 
-        // Set Cover
-        const modalCover = document.getElementById('modalCover');
-        modalCover.className = `${book.coverClass} w-24 h-34 rounded-xl flex-shrink-0 p-2.5 text-white flex flex-col justify-between shadow-md relative overflow-hidden`;
-        document.getElementById('modalCoverTag').innerText = book.badge;
+        const cover = document.getElementById('modalCover');
+        cover.className = `w-24 h-36 rounded-xl flex-shrink-0 relative overflow-hidden shadow-soft ${book.coverClass} flex flex-col justify-between p-2.5 text-white book-spine-effect`;
+
+        const modalCoverImg = document.getElementById('modalCoverImg');
+        modalCoverImg.src = book.coverImage;
+        modalCoverImg.alt = book.title;
+
+        document.getElementById('modalBadge').innerText = book.badge;
         document.getElementById('modalCoverTitle').innerText = book.title;
         document.getElementById('modalCoverAuthor').innerText = book.author;
 
-        // Details
+        document.getElementById('modalCategory').innerText = book.category;
         document.getElementById('modalTitle').innerText = book.title;
         document.getElementById('modalAuthor').innerText = `Oleh: ${book.author}`;
-        document.getElementById('modalCategory').innerText = book.category;
-        document.getElementById('modalRating').innerText = `${book.rating} (${book.reviewsCount} ulasan)`;
-        document.getElementById('modalPages').innerText = `${book.pages} m/s`;
-        document.getElementById('modalFormat').innerText = book.format;
+        document.getElementById('modalPages').innerText = `${book.pages} ms`;
+        document.getElementById('modalYear').innerText = `Edisi ${book.year}`;
+        document.getElementById('modalRating').innerText = book.rating;
         document.getElementById('modalPrice').innerText = book.price;
-        document.getElementById('modalEcoBonus').innerText = `🌱 Jimat ${book.co2Saved} CO₂`;
         document.getElementById('modalSynopsis').innerText = book.synopsis;
 
-        // Highlights list
-        const highlightsContainer = document.getElementById('modalHighlights');
-        highlightsContainer.innerHTML = book.highlights.map(item => `
-          <div class="flex items-start gap-2 bg-stone-50 p-2 rounded-lg border border-stone-200/60">
-            <i class="fa-solid fa-check text-emerald-600 mt-0.5 text-xs"></i>
-            <span class="text-stone-700 leading-snug">${item}</span>
+        const highlights = document.getElementById('modalHighlights');
+        highlights.innerHTML = book.highlights.map(h => `
+          <div class="flex items-start gap-2 bg-ruby-50/60 p-2 rounded-xl border border-ruby-100/50">
+            <i class="fa-solid fa-check text-ruby-600 mt-0.5 text-[10px]"></i>
+            <span class="text-ruby-950 leading-snug">${h}</span>
           </div>
         `).join('');
 
         const buyBtn = document.getElementById('modalBuyBtn');
-        if (buyBtn) {
-          const directUrl = book.bookUrl || 'https://thebooklatte.com';
-          buyBtn.setAttribute('href', directUrl);
-          buyBtn.setAttribute('target', '_blank');
-          buyBtn.setAttribute('rel', 'noopener noreferrer');
-        }
+        buyBtn.setAttribute('href', book.bookUrl);
 
         this.updateModalBookmarkIcon();
 
-        // Show Modal
-        const modal = document.getElementById('detailModal');
-        modal.classList.remove('hidden');
+        document.getElementById('detailModal').classList.remove('hidden');
       }
 
       closeModal() {
-        const modal = document.getElementById('detailModal');
-        modal.classList.add('hidden');
+        document.getElementById('detailModal').classList.add('hidden');
         this.activeModalBook = null;
       }
 
-      simulateSampleRead() {
-        this.showToast(`Membuka sinopsis e-book ID: ${this.activeModalBook.bookId}`, "fa-book-open");
-      }
-
-      handleBuyClick(event) {
-        if (this.activeModalBook) {
-          this.showToast(`Membuka paparan baru: ${this.activeModalBook.title}`, "fa-arrow-up-right-from-square");
-        }
-      }
-
-      updateCalculator(bookCount) {
-        const count = parseInt(bookCount);
-        document.getElementById('sliderValue').innerText = `${count} Buku / Tahun`;
-
-        // 1 average printed book = ~300 pages = ~0.035 of a tree, 2.7kg CO2, 15.6L water
-        const pages = count * 300;
-        const co2 = (count * 2.7).toFixed(1);
-        const water = (count * 15.6).toFixed(1);
-        const trees = (count * 0.036).toFixed(2);
-
-        document.getElementById('calcPaper').innerHTML = `${pages.toLocaleString()} <span class="text-xs font-medium text-stone-600">helai</span>`;
-        document.getElementById('calcCO2').innerHTML = `${co2} <span class="text-xs font-medium text-stone-600">kg CO₂e</span>`;
-        document.getElementById('calcWater').innerHTML = `${water} <span class="text-xs font-medium text-stone-600">Liter</span>`;
-        document.getElementById('calcTrees').innerHTML = `${trees} <span class="text-xs font-medium text-stone-600">Pokok</span>`;
-      }
-
-      showToast(message, iconClass = "fa-circle-check") {
+      showToast(msg, icon = "fa-check") {
         const toast = document.getElementById('toast');
-        const toastMsg = document.getElementById('toastMsg');
-        const toastIcon = document.getElementById('toastIcon');
-
-        toastMsg.innerText = message;
-        toastIcon.className = `fa-solid ${iconClass} text-emerald-400`;
+        document.getElementById('toastMsg').innerText = msg;
+        document.getElementById('toastIcon').className = `fa-solid ${icon} text-ruby-300`;
 
         toast.classList.remove('opacity-0', 'pointer-events-none');
         toast.classList.add('opacity-100');
 
-        if (this.toastTimeout) clearTimeout(this.toastTimeout);
-        this.toastTimeout = setTimeout(() => {
+        if (this.toastTimer) clearTimeout(this.toastTimer);
+        this.toastTimer = setTimeout(() => {
           toast.classList.remove('opacity-100');
           toast.classList.add('opacity-0', 'pointer-events-none');
-        }, 2800);
+        }, 2400);
       }
     }
 
-    // Initialize application instance on DOM load
     let app;
     window.addEventListener('DOMContentLoaded', () => {
-      app = new EcoReadsApp();
+      app = new BookLatteCleanApp();
     });
   </script>
 </body>
